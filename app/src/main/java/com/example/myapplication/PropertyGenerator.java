@@ -2,27 +2,24 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class PropertyGenerator {
-    private List<Property> properties;
+    private Set<Property> properties;
     
     public PropertyGenerator() {
-        this.properties = new ArrayList<>();
+        this.properties = new HashSet<>();
     }
-    public PropertyGenerator(List<Property> properties) {
+    public PropertyGenerator(Set<Property> properties) {
         this.properties = properties;
     }
 
-    public List<Property> getProperties() {
+    public Set<Property> getProperties() {
         return properties;
     }
 
-    public void setProperties(List<Property> properties) {
+    public void setProperties(Set<Property> properties) {
         this.properties = properties;
     }
     
@@ -57,7 +54,7 @@ public class PropertyGenerator {
     
     public static PropertyGenerator loadFromBespokeFile(File file) {
         PropertyGenerator propertyGenerator = new PropertyGenerator();
-        List<Property> propertyList = new ArrayList<>();
+        Set<Property> propertyList = new HashSet<>();
         try {
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
@@ -88,7 +85,7 @@ public class PropertyGenerator {
     
     public PropertyGenerator createProperties() {
         PropertyGenerator propertyGenerator;
-        ArrayList<Property> properties = new ArrayList<>();
+        Set<Property> properties = new HashSet<>();
         int numProperties = 1000;
         double base_latitude = -35.282001;
         double base_longtitude = 149.128998;
@@ -115,7 +112,7 @@ public class PropertyGenerator {
             properties.add(new Property(ps, pt, price, suburb, latitude, longtitude, address, numBedrooms, numBathrooms, numCarspaces, postcode, agent, allowPets));
         }
         propertyGenerator = new PropertyGenerator(properties);
-        
+        System.out.println("Number of properties generated: " + properties.size());
         File file = new File("sample_properties.txt");
         file.delete();
         propertyGenerator.saveToBespokeFile(file);
@@ -136,6 +133,6 @@ public class PropertyGenerator {
 
     public static void main(String[] args) {
         PropertyGenerator pg = new PropertyGenerator().createProperties();
-        System.out.println(pg);
+//        System.out.println(pg);
     }
 }
