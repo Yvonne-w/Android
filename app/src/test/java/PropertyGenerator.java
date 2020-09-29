@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class PropertyGenerator {
     private Set<Property> properties;
-    
+
     public PropertyGenerator() {
         this.properties = new HashSet<>();
     }
@@ -22,18 +22,18 @@ public class PropertyGenerator {
     public void setProperties(Set<Property> properties) {
         this.properties = properties;
     }
-    
+
     @Override
     public String toString() {
-        return this.properties.stream().map(property -> "•" + property.discription() + ";\n").collect(Collectors.joining());
+        return this.properties.stream().map(property -> "•" + property.description() + ";\n").collect(Collectors.joining());
     }
-    
+
     public void saveToBespokeFile(File file) {
         FileWriter fileWriter = null;
         try {
             fileWriter = new FileWriter(file);
             for (Property property: properties) {
-                String line = property.propertyState+"|"+property.propertyType+"|"+
+                String line = property.id+"|"+property.propertyState+"|"+property.propertyType+"|"+
                         property.price+"|"+property.suburb+"|"+property.latitude+"|"+
                         property.longitude+"|"+property.address+"|"+property.numBedrooms+"|"+
                         property.numBathrooms+"|"+property.numCarspaces+"|"+property.postcode+"|"+
@@ -51,7 +51,7 @@ public class PropertyGenerator {
             }
         }
     }
-    
+
     public static PropertyGenerator loadFromBespokeFile(File file) {
         PropertyGenerator propertyGenerator = new PropertyGenerator();
         Set<Property> propertyList = new HashSet<>();
@@ -82,7 +82,7 @@ public class PropertyGenerator {
         propertyGenerator.setProperties(propertyList);
         return propertyGenerator;
     }
-    
+
     public PropertyGenerator createProperties() {
         PropertyGenerator propertyGenerator;
         Set<Property> properties = new HashSet<>();
@@ -109,7 +109,10 @@ public class PropertyGenerator {
             int postcode = 2600+random.nextInt(30);
             Agent agent = randomEnum(Agent.class);
             boolean allowPets = random.nextBoolean();
-            properties.add(new Property(ps, pt, price, suburb, latitude, longtitude, address, numBedrooms, numBathrooms, numCarspaces, postcode, agent, allowPets));
+
+            Property p =new Property(ps, pt, price, suburb, latitude, longtitude, address, numBedrooms, numBathrooms, numCarspaces, postcode, agent, allowPets);
+            p.id = 1001+i;
+            properties.add(p);
         }
         propertyGenerator = new PropertyGenerator(properties);
         System.out.println("Number of properties generated: " + properties.size());
@@ -126,9 +129,9 @@ public class PropertyGenerator {
         int randomNo = random.nextInt(tClass.getEnumConstants().length);
         return tClass.getEnumConstants()[randomNo];
     }
-    
+
     public void testGenerator() {
-        
+
     }
 
     public static void main(String[] args) {

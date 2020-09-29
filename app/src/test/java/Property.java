@@ -1,6 +1,7 @@
 import java.io.Serializable;
 
 public class Property implements Serializable {
+    public int id;
     public PropertyState propertyState;
     public PropertyType propertyType;
     public double price;
@@ -33,13 +34,13 @@ public class Property implements Serializable {
     }
 
     //
-    public String discription() {
+    public String description() {
         return String.format("This is a %s for %s at price %.0f in suburb %s. \n" +
-                "Number of bedrooms: %d; \n" +
-                "Number of bathrooms: %d; \n" +
-                "Number of car spaces: %d; \n" +
-                "Petsallowed: %b; \n" +
-                "Managed by agent: %s",
+                        "Number of bedrooms: %d; \n" +
+                        "Number of bathrooms: %d; \n" +
+                        "Number of car spaces: %d; \n" +
+                        "Petsallowed: %b; \n" +
+                        "Managed by agent: %s",
                 this.propertyType, this.propertyState.getState(), this.price, this.suburb,
                 this.numBedrooms, this.numBathrooms, this.numCarspaces, this.allowPets,
                 this.agent);
@@ -48,7 +49,7 @@ public class Property implements Serializable {
     public static void main(String[] args) {
         Property p = new Property(PropertyState.Rent, PropertyType.Duplex, 350.5, Suburb.Belconnen, -35.282001, 149.128998,
                 "11 Kirinari St", 5, 2, 0, 2617, Agent.Unilodge, false);
-        System.out.println(p.discription());
+        System.out.println(p.description());
     }
 }
 
