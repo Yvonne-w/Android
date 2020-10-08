@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                new PropertyGenerator().createProperties();
               Intent intent = new Intent(MainActivity.this,SearchResult.class);
               startActivity(intent);
             }
