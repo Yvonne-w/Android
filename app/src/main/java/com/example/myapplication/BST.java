@@ -1,67 +1,28 @@
 package com.example.myapplication;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-public class MainActivity extends AppCompatActivity {
+
+public class BST {
     public List<Property> properties;
     public BSTree bsTree;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        List<Property> properties = new ArrayList<Property>();
-        bsTree = new BSTree();
-
-        try {
-            properties = loadData("sample_properties.xml");  //load data from xml
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        for (int i = 0; i < properties.size(); i++) {  //build BSTree to store data
-            bsTree.add(properties.get(i));
-        }
-
-        String temp = "suburb = City; bathroom>1; bathroom<3";
-        bsTree.inOrderTraverse(bsTree, temp.toLowerCase());
-
-        Button button = (Button) findViewById(R.id.searchButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SearchResult.class);
-                startActivity(intent);
-
-            }
-        });
-
+    public BST() {
+        this.bsTree = new BSTree();
     }
 
-
-    public List<Property> loadData(String filename) throws IOException {
-//        File dir = Environment.getExternalStorageDirectory();
-//        File f = new File(dir, filePath);
-
-        InputStream f = getAssets().open(filename);
+    public List<Property> loadData(String filePath) {
+        File f = new File(filePath);
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         List<Property> lp = new ArrayList<Property>();
 
@@ -102,4 +63,5 @@ public class MainActivity extends AppCompatActivity {
 
         return lp;
     }
+
 }

@@ -1,11 +1,16 @@
 package com.example.myapplication;
-
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
+import java.io.File;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -14,12 +19,6 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.*;
-import java.util.stream.Collectors;
 
 public class PropertyGenerator {
     private Set<Property> properties;
@@ -38,10 +37,6 @@ public class PropertyGenerator {
 
     public void setProperties(Set<Property> properties) {
         this.properties = properties;
-    }
-
-    public static void main(String[] args) {
-        PropertyGenerator pg = new PropertyGenerator().createProperties();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -83,37 +78,16 @@ public class PropertyGenerator {
         }
         propertyGenerator = new PropertyGenerator(properties);
         System.out.println("Number of properties generated: " + properties.size());
-        File file = new File("sample_properties.txt");
-        file.delete();
-        propertyGenerator.saveToTxtFile(file);
+//        File file = new File("sample_properties.txt");
+//        file.delete();
+//        propertyGenerator.saveToJSONFile(new File("sample_properties.json"));
+//        propertyGenerator.saveToTxtFile(file);
         propertyGenerator.saveToXML("sample_properties.xml");
 
         return propertyGenerator;
     }
 
-    public void saveToTxtFile(File file) {
-        FileWriter fileWriter = null;
-        try {
-            fileWriter = new FileWriter(file);
-            for (Property property : properties) {
-                String line = property.id + "|" + property.getState() + "|" + property.getType() + "|" +
-                        property.getPrice() + "|" + property.getSuburb() + "|" + property.getLatitude() + "|" +
-                        property.getLongitude() + "|" + property.getAddress() + "|" + property.getNumBedrooms() + "|" +
-                        property.getNumBathrooms() + "|" + property.getNumCarspaces() + "|" + property.getPostcode() + "|" +
-                        property.getAgent() + "|" + property.getAllowPets();
-                fileWriter.write(line);
-                fileWriter.write(System.getProperty("line.separator"));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                fileWriter.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+
 
     // helper to select randomly from an enum list
     public static <T extends Enum<?>> T randomEnum(Class<T> tClass) {
@@ -130,11 +104,11 @@ public class PropertyGenerator {
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document d = db.newDocument();
 
-            Element rootElement = d.createElement("Property");
+            Element rootElement = d.createElement("Properties");
             d.appendChild(rootElement);
 
-            for (Property p : properties) {
-                Element spElement = d.createElement("StringProperty");
+            for (Property p: properties) {
+                Element spElement = d.createElement("Property");
                 spElement.setAttribute("id", String.valueOf(p.getId()));
                 Element pStateElement = d.createElement("propertyState");
                 pStateElement.appendChild(d.createTextNode(String.valueOf(p.getState())));
@@ -192,4 +166,11 @@ public class PropertyGenerator {
         }
     }
 
+
+
+
+    public static void main(String[] args) {
+        PropertyGenerator pg = new PropertyGenerator().createProperties();
+    }
 }
+
