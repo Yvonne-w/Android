@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,6 +24,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 public class MainActivity extends AppCompatActivity {
     public List<Property> properties;
     public BSTree bsTree;
+    public List<Property> resultProperties;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +43,29 @@ public class MainActivity extends AppCompatActivity {
             bsTree.add(properties.get(i));
         }
 
-        String temp = "suburb = City; bathroom>1; bathroom<3";
-        bsTree.inOrderTraverse(bsTree, temp.toLowerCase());
+
 
         Button button = (Button) findViewById(R.id.searchButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                EditText userInput = findViewById(R.id.searchText1);
+                String temp = userInput.getText().toString();
+//                System.out.println("check here"+searchText1);
+
+//                e.g. String temp = "suburb = City; bathroom>1; bathroom<3";
+                bsTree.inOrderTraverse(bsTree, temp.toLowerCase());
+                String resultApp = bsTree.resultStr;
+                System.out.println(resultApp);
+
+//                resultProperties = bsTree.result;
+//                System.out.println(resultProperties);
+
+
+
+
                 Intent intent = new Intent(MainActivity.this, SearchResult.class);
+                intent.putExtra("resultStr",resultApp);
                 startActivity(intent);
 
             }
@@ -58,9 +75,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public List<Property> loadData(String filename) throws IOException {
-//        File dir = Environment.getExternalStorageDirectory();
-//        File f = new File(dir, filePath);
-
         InputStream f = getAssets().open(filename);
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         List<Property> lp = new ArrayList<Property>();

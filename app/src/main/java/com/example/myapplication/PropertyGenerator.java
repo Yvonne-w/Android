@@ -20,6 +20,10 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+/**
+ * This class is used to generate 1000 property instances. We run this class in IntelliJ to get the XML (sample_properties.xml). To run it in the Android, it might have errors.
+ */
+
 public class PropertyGenerator {
     private Set<Property> properties;
 

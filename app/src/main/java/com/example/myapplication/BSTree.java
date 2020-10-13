@@ -1,23 +1,27 @@
 package com.example.myapplication;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class BSTree {
     Property property;
     BSTree left, right;
-    int num;
+    List<Property> result;
+    String resultStr;
 
     BSTree(Property property) {
         this.property = property;
-        this.num = 1;
         this.left = new BSTree();
         this.right = new BSTree();
+        this.result = new ArrayList<>();
+        resultStr = "";
     }
 
     BSTree() {
         this.property = new Property();
-        this.num = 0;
+        this.result = new ArrayList<>();
+        resultStr = "";
     }
 
     boolean add(Property element) {
@@ -29,14 +33,12 @@ public class BSTree {
         if (element.compareTo(property) < 0) {
             if (left == null) {
                 left = new BSTree(element);
-                num++;
                 return true;
             }
             return left.add(element); //recursively find the location of the element until there is a null.
         } else if (element.compareTo(property) > 0) {
             if (right == null) {
                 right = new BSTree(element);
-                num++;
                 return true;
             }
             return right.add(element);
@@ -51,7 +53,10 @@ public class BSTree {
             if (x.property.id != 0) {
 //                System.out.println(x.property.toString());
                 if (x.checkConditions(exp)) {
-                    System.out.println(x.property.toString());
+                    result.add(x.property);
+                    resultStr+=x.property.toString();
+//                    System.out.println(resultStr);
+//                    System.out.println(x.property.toString());
                 }
                 ;
             }
