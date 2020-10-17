@@ -179,6 +179,10 @@ public class Property implements Comparable<Property>, Serializable {
 //            belconnen, city, gungahlin, jerrabomberra, majura, molonglo_Valley,
 //                    tuggeranong, weston_Creek, woden_Valley;
             return String.valueOf(this.getSuburb());
+        }else if(s.contains("lut")||s.contains("str")||s.contains("uni")||s.contains("lj")||s.contains("bolton")||s.contains("lodge")||s.contains("mountain")||s.contains("ver")||s.contains("west")||s.contains("ray")||s.contains("harcourts")){
+//            luton, strive, badenoch, above, rayWhite, harcourts, uniGardens, lj_hooker, bolton,
+//                    mountain, veriton, jada, smart_home_creation, mangolilly, action_advantage, unilodge;
+            return String.valueOf(this.getAgent());
         }
 
         switch (s) {
