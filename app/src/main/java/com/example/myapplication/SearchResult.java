@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,11 +23,12 @@ import java.util.List;
 
 
 public class SearchResult extends AppCompatActivity {
+    @SuppressLint("StaticFieldLeak")
     private static MyAdapter adapter;
-    String res;
+//    String res;
     ListView listView;
-    String mTitle[];
-    String mDescription[];
+    String[] mTitle;
+    String[] mDescription;
     int[] images;
 
     @Override
@@ -42,28 +44,29 @@ public class SearchResult extends AppCompatActivity {
         }
 
         Intent intent = getIntent();
-        String res = intent.getStringExtra("resultStr");
+//        String res = intent.getStringExtra("resultStr");
 
         List<Property> resultList = (List<Property>) intent.getSerializableExtra("resultList");
 
-        if (res.length() >= 1) {
-            String[] tokens = res.split("Property");
+        assert resultList != null;
+        if (resultList.size() >= 1) {
+//            String[] tokens = res.split("Property");
 
-            int n = tokens.length;
+            int n = resultList.size();
             mTitle = new String[n];
             mDescription = new String[n];
             images = new int[n];
 
             for (int j = 0; j < n - 1; j++) {
-                mDescription[j] = tokens[j + 1];
+                mDescription[j] = resultList.get(j).toString();
+
                 double amount = resultList.get(j).getPrice();
                 NumberFormat formatter = NumberFormat.getCurrencyInstance();
                 String finalAmount = formatter.format(amount);
-
                 mTitle[j] = finalAmount;
+
                 int id = resultList.get(j).getId();
                 String picName = "img" + id;
-
                 int id2 = getResources().getIdentifier(picName, "drawable", getPackageName());
                 images[j] = id2;
             }
@@ -89,11 +92,11 @@ public class SearchResult extends AppCompatActivity {
     class MyAdapter extends ArrayAdapter<String> {
         public String res;
         Context context;
-        String rTitle[];
-        String rDescription[];
-        int rImgs[];
+        String[] rTitle;
+        String[] rDescription;
+        int[] rImgs;
 
-        MyAdapter(Context c, String title[], String description[], int imgs[]) {
+        MyAdapter(Context c, String[] title, String[] description, int[] imgs) {
             super(c, R.layout.customlayout, R.id.textView1, title);
             this.context = c;
             this.rTitle = title;
@@ -106,7 +109,7 @@ public class SearchResult extends AppCompatActivity {
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             LayoutInflater layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View custom = layoutInflater.inflate(R.layout.customlayout, parent, false);
+            @SuppressLint("ViewHolder") View custom = layoutInflater.inflate(R.layout.customlayout, parent, false);
             ImageView images = custom.findViewById(R.id.image);
             TextView myTitle = custom.findViewById(R.id.textView1);
             TextView myDescription = custom.findViewById(R.id.textView2);

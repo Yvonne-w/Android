@@ -90,7 +90,7 @@ public class BSTree {
                 mark += 20;
             }
             return Double.parseDouble(currentVal) < Double.parseDouble(desiredVal);
-        } else if (r.condition == Condition.EQUAL) {
+        } else if (r.condition == Condition.EQUAL||r.condition ==Condition.UNKNOWN) {
             if (currentVal.equals(desiredVal)) {
                 mark += 20;
             }

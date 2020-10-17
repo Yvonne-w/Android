@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 //        ImageView bg = findViewById(R.id.background);
 //        bg.setImageResource(getResources().getIdentifier("img1278", "drawable", getPackageName()));
 
-        List<Property> properties = new ArrayList<Property>();
+        List<Property> properties = new ArrayList<>();
         bsTree = new BSTree();
 
         temp = "";
@@ -54,27 +54,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-
         Button button = (Button) findViewById(R.id.searchButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                EditText userInput = findViewById(R.id.searchText1);
-                temp = userInput.getText().toString();
-
-                bsTree.inOrderTraverse(bsTree, temp.toLowerCase());
-                resultApp = bsTree.resultStr;
-                resultProperties = bsTree.result;
-
-                Intent intent = new Intent(MainActivity.this, SearchResult.class);
-                intent.putExtra("resultStr",resultApp);
-                intent.putExtra("resultList", (Serializable) resultProperties);
-                startActivity(intent);
-                userInput.getText().clear();
-
-            }
-        });
+        button.setOnClickListener(this::onClick);
 
     }
 
@@ -82,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     public List<Property> loadData(String filename) throws IOException {
         InputStream f = getAssets().open(filename);
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        List<Property> lp = new ArrayList<Property>();
+        List<Property> lp = new ArrayList<>();
 
         try {
             DocumentBuilder db = dbf.newDocumentBuilder();
@@ -120,5 +101,20 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return lp;
+    }
+
+    private void onClick(View view) {
+        EditText userInput = findViewById(R.id.searchText1);
+        temp = userInput.getText().toString();
+
+        bsTree.inOrderTraverse(bsTree, temp.toLowerCase());
+        resultApp = bsTree.resultStr;
+        resultProperties = bsTree.result;
+
+        Intent intent = new Intent(MainActivity.this, SearchResult.class);
+        intent.putExtra("resultStr", resultApp);
+        intent.putExtra("resultList", (Serializable) resultProperties);
+        startActivity(intent);
+        userInput.getText().clear();
     }
 }

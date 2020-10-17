@@ -12,56 +12,53 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="1dp"
-        android:layout_marginTop="195dp"
         android:layout_marginRight="1dp"
         android:layout_marginBottom="15dp"
         android:fontFamily="cursive"
         android:text="Property in Canberra"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#4CAF50"
-        android:textSize="45sp"
+        android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/searchText1"
-        app:layout_constraintHorizontal_bias="0.625"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.256" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/searchText1"
-        android:layout_width="286dp"
-        android:layout_height="53dp"
+        android:layout_width="303dp"
+        android:layout_height="59dp"
         android:layout_marginStart="6dp"
         android:layout_marginLeft="6dp"
-        android:layout_marginTop="37dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginRight="3dp"
-        android:layout_marginBottom="392dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         android:width="1dp"
         android:hint="hint"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/searchButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.446" />
 
     <Button
         android:id="@+id/searchButton"
-        android:layout_width="82dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/btn_all_shape"
         android:text="Search"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/searchText1"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.424" />
+        app:layout_constraintVertical_bias="0.432" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="83dp"
-        android:layout_height="35dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="175dp"
         android:layout_marginLeft="175dp"
         android:layout_marginTop="400dp"
@@ -72,10 +69,10 @@
         android:text="Help"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.645" />
+        app:layout_constraintVertical_bias="0.421" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

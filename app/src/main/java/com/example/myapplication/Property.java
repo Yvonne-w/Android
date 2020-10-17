@@ -156,8 +156,7 @@ public class Property implements Comparable<Property>, Serializable {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         String finalAmount = formatter.format(amount);
 
-        return "Property" +
-                state.toString().toUpperCase() +
+        return  state.toString().toUpperCase() +
                 " | " + type.toString().toUpperCase() +
                 " \n" + finalAmount +
                 " \n" + suburb.toString().toUpperCase() +
@@ -170,6 +169,18 @@ public class Property implements Comparable<Property>, Serializable {
     }
 
     public String getAttribute(String s) {
+        if(s.contains("rent")||s.contains("sale")||s.contains("auction")||s.contains("share")){
+           return String.valueOf(this.getState());
+        }
+        else if(s.contains("house")||s.contains("unit")||s.contains("townhouse")||s.contains("flat")||s.contains("apart")||s.contains("dup")){
+            //house, unit, townhouse, flat, apartment, duplex;
+            return String.valueOf(this.getType());
+        }else if(s.contains("bel")||s.contains("cit")||s.contains("gun")||s.contains("jer")||s.contains("maj")||s.contains("mol")||s.contains("val")||s.contains("tug")||s.contains("west")||s.contains("woden")||s.contains("dis")){
+//            belconnen, city, gungahlin, jerrabomberra, majura, molonglo_Valley,
+//                    tuggeranong, weston_Creek, woden_Valley;
+            return String.valueOf(this.getSuburb());
+        }
+
         switch (s) {
             case "id":
                 return String.valueOf(this.getId());

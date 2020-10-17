@@ -16,10 +16,10 @@ public class ActivityWeb extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-//        String propertyStr = intent.getStringExtra("PropertyStr");
         Property pw = (Property) intent.getSerializableExtra("PropertyWeb");
 
         TextView textView = findViewById(R.id.textViewWeb);
+        assert pw != null;
         textView.setText(pw.description());
 
         ImageView iv = findViewById(R.id.imgWeb);
