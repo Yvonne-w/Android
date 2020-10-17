@@ -136,7 +136,7 @@ public class PropertyGenerator {
                 addressElement.appendChild(d.createTextNode(String.valueOf(p.getAddress())));
                 spElement.appendChild(addressElement);
                 Element bedroomElement = d.createElement("numBedrooms");
-                bedroomElement.appendChild(d.createTextNode(String.valueOf(p.getNumBedrooms())));
+                bedroomElement.appendChild(d.createTextNode(String.valueOf(p.getBedrooms())));
                 spElement.appendChild(bedroomElement);
                 Element bathroomElement = d.createElement("numBathrooms");
                 bathroomElement.appendChild(d.createTextNode(String.valueOf(p.getNumBathrooms())));

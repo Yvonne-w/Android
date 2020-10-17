@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
-public class Property implements Comparable<Property> {
+import java.io.Serializable;
+
+public class Property implements Comparable<Property>, Serializable {
     public int id;
     private State state;
     private Type type;
@@ -9,7 +11,7 @@ public class Property implements Comparable<Property> {
     private double latitude;
     private double longitude;
     private String address;
-    private int numBedrooms;
+    private int bedrooms;
     private int numBathrooms;
     private int numCarspaces;
     private int postcode;
@@ -21,7 +23,7 @@ public class Property implements Comparable<Property> {
     }
 
     public Property(State ps, Type pt, double price, Suburb sb, double lat, double lon,
-                    String add, int numBedrooms, int numBathrooms, int numCs, int pc, Agent ag, boolean pets) {
+                    String add, int bedrooms, int numBathrooms, int numCs, int pc, Agent ag, boolean pets) {
         this.state = ps;
         this.type = pt;
         this.price = price;
@@ -29,7 +31,7 @@ public class Property implements Comparable<Property> {
         this.latitude = lat;
         this.longitude = lon;
         this.address = add;
-        this.numBedrooms = numBedrooms;
+        this.bedrooms = bedrooms;
         this.numBathrooms = numBathrooms;
         this.numCarspaces = numCs;
         this.postcode = pc;
@@ -40,7 +42,7 @@ public class Property implements Comparable<Property> {
 
     public Property(String id, String propertyState, String propertyType,
                     String price, String suburb, String latitude, String longitude,
-                    String address, String numBedrooms, String numBathrooms, String numCarspaces,
+                    String address, String bedrooms, String numBathrooms, String numCarspaces,
                     String postcode, String agent, String allowPets) {
         this.id = Integer.parseInt(id);
         this.state = State.valueOf(propertyState);
@@ -50,7 +52,7 @@ public class Property implements Comparable<Property> {
         this.latitude = Double.parseDouble(latitude);
         this.longitude = Double.parseDouble(longitude);
         this.address = address;
-        this.numBedrooms = Integer.parseInt(numBedrooms);
+        this.bedrooms = Integer.parseInt(bedrooms);
         this.numBathrooms = Integer.parseInt(numBathrooms);
         this.numCarspaces = Integer.parseInt(numCarspaces);
         this.postcode = Integer.parseInt(postcode);
@@ -91,8 +93,8 @@ public class Property implements Comparable<Property> {
         return numBathrooms;
     }
 
-    public int getNumBedrooms() {
-        return numBedrooms;
+    public int getBedrooms() {
+        return bedrooms;
     }
 
     public int getNumCarspaces() {
@@ -127,16 +129,16 @@ public class Property implements Comparable<Property> {
                         "Petsallowed: %b; \n" +
                         "Managed by agent: %s",
                 this.type, this.state.getState(), this.price, this.suburb,
-                this.numBedrooms, this.numBathrooms, this.numCarspaces, this.allowPets,
+                this.bedrooms, this.numBathrooms, this.numCarspaces, this.allowPets,
                 this.agent);
     }
 
 
-    public static void main(String[] args) {
-        Property p = new Property(State.rent, Type.duplex, 350.5, Suburb.belconnen, -35.282001, 149.128998,
-                "11 Kirinari St", 5, 2, 0, 2617, Agent.unilodge, false);
-        System.out.println(p.description());
-    }
+//    public static void main(String[] args) {
+//        Property p = new Property(State.rent, Type.duplex, 350.5, Suburb.belconnen, -35.282001, 149.128998,
+//                "11 Kirinari St", 5, 2, 0, 2617, Agent.unilodge, false);
+//        System.out.println(p.description());
+//    }
 
     public int compareTo(Property o) {
         int o1 = o.id;
@@ -152,22 +154,21 @@ public class Property implements Comparable<Property> {
 
     @Override
     public String toString() {
-        return "Property{" +
-                "id=" + id +
-                ", state=" + state +
-                ", type=" + type +
-                ", price=" + price +
-                ", suburb=" + suburb +
-                ", latitude=" + latitude +
-                ", longitude=" + longitude +
-                ", address='" + address + '\'' +
-                ", numBedrooms=" + numBedrooms +
-                ", numBathrooms=" + numBathrooms +
-                ", numCarspaces=" + numCarspaces +
-                ", postcode=" + postcode +
-                ", agent=" + agent +
-                ", allowPets=" + allowPets +
-                '}';
+        return "Property" +
+//                "id=" + id +
+                "state=" + state +
+                " | type=" + type +
+                " | price=" + price +
+                " | suburb=" + suburb +
+                " | latitude=" + latitude +
+                " | longitude=" + longitude +
+                " | address='" + address + '\'' +
+                " | Bedrooms=" + bedrooms +
+                " | Bathrooms=" + numBathrooms +
+                " | Carspaces=" + numCarspaces +
+                " | postcode=" + postcode +
+                " | agent=" + agent +
+                " | allowPets=" + allowPets;
     }
 
     public String getAttribute(String s) {
@@ -189,7 +190,7 @@ public class Property implements Comparable<Property> {
             case "address":
                 return String.valueOf(this.getAddress());
             case "bedroom":
-                return String.valueOf(this.getNumBedrooms());
+                return String.valueOf(this.getBedrooms());
             case "bathroom":
                 return String.valueOf(this.getNumBathrooms());
             case "car":
@@ -204,6 +205,7 @@ public class Property implements Comparable<Property> {
 
         return "";
     }
+
 }
 
 

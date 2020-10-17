@@ -15,6 +15,7 @@ import org.w3c.dom.NodeList;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,21 +52,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 EditText userInput = findViewById(R.id.searchText1);
                 String temp = userInput.getText().toString();
-//                System.out.println("check here"+searchText1);
 
-//                e.g. String temp = "suburb = City; bathroom>1; bathroom<3";
                 bsTree.inOrderTraverse(bsTree, temp.toLowerCase());
                 String resultApp = bsTree.resultStr;
-                System.out.println(resultApp);
-
-//                resultProperties = bsTree.result;
-//                System.out.println(resultProperties);
-
-
-
+                resultProperties = bsTree.result;
 
                 Intent intent = new Intent(MainActivity.this, SearchResult.class);
                 intent.putExtra("resultStr",resultApp);
+                intent.putExtra("resultList", (Serializable) resultProperties);
                 startActivity(intent);
 
             }

@@ -2,7 +2,6 @@ package com.example.myapplication;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class BSTree {
     Property property;
@@ -51,14 +50,10 @@ public class BSTree {
         if (x != null) {
             inOrderTraverse(x.left, exp);
             if (x.property.id != 0) {
-//                System.out.println(x.property.toString());
                 if (x.checkConditions(exp)) {
                     result.add(x.property);
-                    resultStr+=x.property.toString();
-//                    System.out.println(resultStr);
-//                    System.out.println(x.property.toString());
+                    resultStr += x.property.toString();
                 }
-                ;
             }
             inOrderTraverse(x.right, exp);
         }
@@ -66,38 +61,68 @@ public class BSTree {
 
     private boolean checkConditions(String exp) {
         Tokenizer t = new Tokenizer(exp);
-        Map<String, List<Requirement>> conditions = new Parser(t).parseExp();
+//        Map<String, List<Requirement>> conditions = new Parser(t).parseExp();
+        List<Requirement> requirements = new Parser(t).parseExp();
 
-        for (String s : conditions.keySet()) {
-            List<Requirement> requires = conditions.get(s);
-            for (Requirement r : requires) {
-                if (!checkAttribute(s, r)) return false;
+        for(Requirement r:requirements){
+            if(!checkAttribute(r)){
+                return false;
             }
         }
+
+//        for (String s : conditions.keySet()) {
+//            List<Requirement> requires = conditions.get(s);
+//            for (Requirement r : requires) {
+//                if (!checkAttribute(s, r)) return false;
+//                System.out.println(conditions.toString());
+//            }
+//        }
         return true;
     }
 
-    private boolean checkAttribute(String s, Requirement r) {
-        String attributeVal = this.property.getAttribute(s);
-        Condition c = r.condition; // > < =
-        String value = r.value;
+    public boolean checkAttribute(Requirement r){
+        String currentVal = this.property.getAttribute(r.attribute);
+        String desiredVal = r.value;
 
-        if (c == Condition.GREATER) {
+                if (r.condition == Condition.GREATER) {
 //            System.out.println(attributeVal+value);
-            return Double.parseDouble(attributeVal) > Double.parseDouble(value);
+            return Double.parseDouble(currentVal) > Double.parseDouble(desiredVal);
         }
 
-        if (c == Condition.LESS) {
+        if (r.condition == Condition.LESS) {
 //            System.out.println(attributeVal+value);
-            return Double.parseDouble(attributeVal) < Double.parseDouble(value);
+            return Double.parseDouble(currentVal) < Double.parseDouble(desiredVal);
         }
 
-        if (c == Condition.EQUAL) {
-            return attributeVal.equals(value);
+        if (r.condition == Condition.EQUAL) {
+            return currentVal.equals(desiredVal);
         }
 
-        return false;
+
+        return true;
     }
+
+//    private boolean checkAttribute( Requirement r) {
+////        String attributeVal = this.property.getAttribute(s);
+//        Condition c = r.condition; // > < =
+//        String value = r.value;
+//
+//        if (c == Condition.GREATER) {
+////            System.out.println(attributeVal+value);
+//            return Double.parseDouble(attributeVal) > Double.parseDouble(value);
+//        }
+//
+//        if (c == Condition.LESS) {
+////            System.out.println(attributeVal+value);
+//            return Double.parseDouble(attributeVal) < Double.parseDouble(value);
+//        }
+//
+//        if (c == Condition.EQUAL) {
+//            return attributeVal.equals(value);
+//        }
+//
+//        return false;
+//    }
 
     @Override
     public String toString() {

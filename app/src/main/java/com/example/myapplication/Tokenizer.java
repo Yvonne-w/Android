@@ -1,9 +1,5 @@
 package com.example.myapplication;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class Tokenizer {
 
     private String buffer;
@@ -42,14 +38,7 @@ public class Tokenizer {
             currentToken = new Token("EQUAL", Token.Type.EQUAL);
             tokenLen = 1;
         }
-        if (firstChar == '[') {
-            currentToken = new Token("[", Token.Type.LSBRA);
-            tokenLen = 1;
-        }
-        if (firstChar == ']') {
-            currentToken = new Token("]", Token.Type.RSBRA);
-            tokenLen = 1;
-        }
+
         if (Character.isDigit(firstChar)) {
             String s = String.valueOf(firstChar);
             int i = 1;
@@ -65,8 +54,6 @@ public class Tokenizer {
             tokenLen = 1;
         }
 
-        // Remove the extracted token from buffer
-//        int tokenLen = currentToken.token().length();
         buffer = buffer.substring(tokenLen);
     }
 
