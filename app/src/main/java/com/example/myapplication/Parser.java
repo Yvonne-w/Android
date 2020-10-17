@@ -3,13 +3,11 @@ package com.example.myapplication;
 import java.util.*;
 
 public class Parser {
-//    public Map<String, List<Requirement>> requirements;
     public List<Requirement> requirements;
     Tokenizer _tokenizer;
 
     public Parser(Tokenizer tokenizer) {
         _tokenizer = tokenizer;
-//        requirements = new HashMap<String, List<Requirement>>();
         requirements = new ArrayList<Requirement>();
     }
 
@@ -43,7 +41,6 @@ public class Parser {
                 _tokenizer.next();
             }
             r.value = String.valueOf(v);
-
 
             requirements.add(r);
 

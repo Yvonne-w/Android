@@ -49,6 +49,7 @@ public class Tokenizer {
             currentToken = new Token(s, Token.Type.INT);
             tokenLen = currentToken.token().length();
         }
+
         if (Character.isLetter(firstChar)) {
             currentToken = new Token(String.valueOf(firstChar), Token.Type.CHAR);
             tokenLen = 1;

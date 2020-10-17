@@ -2,12 +2,15 @@ package com.example.myapplication;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class BSTree {
     Property property;
     BSTree left, right;
     List<Property> result;
     String resultStr;
+    int mark;
+    PriorityQueue pq = new PriorityQueue();
 
     BSTree(Property property) {
         this.property = property;
@@ -15,12 +18,14 @@ public class BSTree {
         this.right = new BSTree();
         this.result = new ArrayList<>();
         resultStr = "";
+        this.mark = 0;
     }
 
     BSTree() {
         this.property = new Property();
         this.result = new ArrayList<>();
         resultStr = "";
+        this.mark = 0;
     }
 
     boolean add(Property element) {
@@ -61,68 +66,40 @@ public class BSTree {
 
     private boolean checkConditions(String exp) {
         Tokenizer t = new Tokenizer(exp);
-//        Map<String, List<Requirement>> conditions = new Parser(t).parseExp();
         List<Requirement> requirements = new Parser(t).parseExp();
 
-        for(Requirement r:requirements){
-            if(!checkAttribute(r)){
+        for (Requirement r : requirements) {
+            if (!checkAttribute(r)) {
                 return false;
             }
         }
-
-//        for (String s : conditions.keySet()) {
-//            List<Requirement> requires = conditions.get(s);
-//            for (Requirement r : requires) {
-//                if (!checkAttribute(s, r)) return false;
-//                System.out.println(conditions.toString());
-//            }
-//        }
         return true;
     }
 
-    public boolean checkAttribute(Requirement r){
+    public boolean checkAttribute(Requirement r) {
         String currentVal = this.property.getAttribute(r.attribute);
         String desiredVal = r.value;
 
-                if (r.condition == Condition.GREATER) {
-//            System.out.println(attributeVal+value);
+        if (r.condition == Condition.GREATER) {
+            if (Double.parseDouble(currentVal) > Double.parseDouble(desiredVal)) {
+                mark += 20;
+            }
             return Double.parseDouble(currentVal) > Double.parseDouble(desiredVal);
-        }
-
-        if (r.condition == Condition.LESS) {
-//            System.out.println(attributeVal+value);
+        } else if (r.condition == Condition.LESS) {
+            if (Double.parseDouble(currentVal) < Double.parseDouble(desiredVal)) {
+                mark += 20;
+            }
             return Double.parseDouble(currentVal) < Double.parseDouble(desiredVal);
-        }
-
-        if (r.condition == Condition.EQUAL) {
+        } else if (r.condition == Condition.EQUAL) {
+            if (currentVal.equals(desiredVal)) {
+                mark += 20;
+            }
             return currentVal.equals(desiredVal);
         }
 
 
         return true;
     }
-
-//    private boolean checkAttribute( Requirement r) {
-////        String attributeVal = this.property.getAttribute(s);
-//        Condition c = r.condition; // > < =
-//        String value = r.value;
-//
-//        if (c == Condition.GREATER) {
-////            System.out.println(attributeVal+value);
-//            return Double.parseDouble(attributeVal) > Double.parseDouble(value);
-//        }
-//
-//        if (c == Condition.LESS) {
-////            System.out.println(attributeVal+value);
-//            return Double.parseDouble(attributeVal) < Double.parseDouble(value);
-//        }
-//
-//        if (c == Condition.EQUAL) {
-//            return attributeVal.equals(value);
-//        }
-//
-//        return false;
-//    }
 
     @Override
     public String toString() {

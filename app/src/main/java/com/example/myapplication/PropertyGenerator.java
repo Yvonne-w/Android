@@ -91,8 +91,6 @@ public class PropertyGenerator {
         return propertyGenerator;
     }
 
-
-
     // helper to select randomly from an enum list
     public static <T extends Enum<?>> T randomEnum(Class<T> tClass) {
         Random random = new Random();
@@ -169,9 +167,6 @@ public class PropertyGenerator {
             e.printStackTrace();
         }
     }
-
-
-
 
     public static void main(String[] args) {
         PropertyGenerator pg = new PropertyGenerator().createProperties();

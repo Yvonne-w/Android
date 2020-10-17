@@ -26,14 +26,23 @@ public class MainActivity extends AppCompatActivity {
     public List<Property> properties;
     public BSTree bsTree;
     public List<Property> resultProperties;
+    String temp;
+    String resultApp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        ImageView bg = findViewById(R.id.background);
+//        bg.setImageResource(getResources().getIdentifier("img1278", "drawable", getPackageName()));
+
         List<Property> properties = new ArrayList<Property>();
         bsTree = new BSTree();
+
+        temp = "";
+        resultApp = "";
+        resultProperties = new ArrayList<>();
 
         try {
             properties = loadData("sample_properties.xml");  //load data from xml
@@ -50,17 +59,19 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 EditText userInput = findViewById(R.id.searchText1);
-                String temp = userInput.getText().toString();
+                temp = userInput.getText().toString();
 
                 bsTree.inOrderTraverse(bsTree, temp.toLowerCase());
-                String resultApp = bsTree.resultStr;
+                resultApp = bsTree.resultStr;
                 resultProperties = bsTree.result;
 
                 Intent intent = new Intent(MainActivity.this, SearchResult.class);
                 intent.putExtra("resultStr",resultApp);
                 intent.putExtra("resultList", (Serializable) resultProperties);
                 startActivity(intent);
+                userInput.getText().clear();
 
             }
         });

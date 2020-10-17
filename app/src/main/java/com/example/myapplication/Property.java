@@ -1,6 +1,9 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
+
 import java.io.Serializable;
+import java.text.NumberFormat;
 
 public class Property implements Comparable<Property>, Serializable {
     public int id;
@@ -121,24 +124,19 @@ public class Property implements Comparable<Property>, Serializable {
         this.address = address;
     }
 
+    @SuppressLint("DefaultLocale")
     public String description() {
         return String.format("This is a %s for %s at price %.0f in suburb %s. \n" +
-                        "Number of bedrooms: %d; \n" +
-                        "Number of bathrooms: %d; \n" +
-                        "Number of car spaces: %d; \n" +
-                        "Petsallowed: %b; \n" +
-                        "Managed by agent: %s",
+                        "\nNumber of bedrooms: %d \n" +
+                        "Number of bathrooms: %d \n" +
+                        "Number of car spaces: %d \n" +
+                        "\nPetsallowed: %b; \n" +
+                        "Managed by agent: %s \n",
                 this.type, this.state.getState(), this.price, this.suburb,
                 this.bedrooms, this.numBathrooms, this.numCarspaces, this.allowPets,
                 this.agent);
     }
 
-
-//    public static void main(String[] args) {
-//        Property p = new Property(State.rent, Type.duplex, 350.5, Suburb.belconnen, -35.282001, 149.128998,
-//                "11 Kirinari St", 5, 2, 0, 2617, Agent.unilodge, false);
-//        System.out.println(p.description());
-//    }
 
     public int compareTo(Property o) {
         int o1 = o.id;
@@ -154,21 +152,21 @@ public class Property implements Comparable<Property>, Serializable {
 
     @Override
     public String toString() {
+        double amount = price;
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        String finalAmount = formatter.format(amount);
+
         return "Property" +
-//                "id=" + id +
-                "state=" + state +
-                " | type=" + type +
-                " | price=" + price +
-                " | suburb=" + suburb +
-                " | latitude=" + latitude +
-                " | longitude=" + longitude +
-                " | address='" + address + '\'' +
-                " | Bedrooms=" + bedrooms +
-                " | Bathrooms=" + numBathrooms +
-                " | Carspaces=" + numCarspaces +
-                " | postcode=" + postcode +
-                " | agent=" + agent +
-                " | allowPets=" + allowPets;
+                state.toString().toUpperCase() +
+                " | " + type.toString().toUpperCase() +
+                " \n" + finalAmount +
+                " \n" + suburb.toString().toUpperCase() +
+                " | " + postcode +
+                " \nRoom(s): " + bedrooms +
+                " Bathroom(s): " + numBathrooms +
+                " Carspace(s): " + numCarspaces +
+                " \n" + agent.toString().toUpperCase() +
+                " \nPets = " + allowPets;
     }
 
     public String getAttribute(String s) {
@@ -176,7 +174,7 @@ public class Property implements Comparable<Property>, Serializable {
             case "id":
                 return String.valueOf(this.getId());
             case "state":
-                return String.valueOf(this.getId());
+                return String.valueOf(this.getState());
             case "type":
                 return String.valueOf(this.getType());
             case "price":
@@ -189,9 +187,15 @@ public class Property implements Comparable<Property>, Serializable {
                 return String.valueOf(this.getLongitude());
             case "address":
                 return String.valueOf(this.getAddress());
+            case "room":
+                return String.valueOf(this.getBedrooms());
             case "bedroom":
                 return String.valueOf(this.getBedrooms());
+            case "bedrooms":
+                return String.valueOf(this.getBedrooms());
             case "bathroom":
+                return String.valueOf(this.getNumBathrooms());
+            case "bathrooms":
                 return String.valueOf(this.getNumBathrooms());
             case "car":
                 return String.valueOf(this.getNumCarspaces());
@@ -207,7 +211,6 @@ public class Property implements Comparable<Property>, Serializable {
     }
 
 }
-
 
 enum State {
     rent("rent"), sale("sale"), auction("auction"), share("share");
