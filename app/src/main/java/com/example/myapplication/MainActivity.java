@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,11 +29,14 @@ public class MainActivity extends AppCompatActivity {
     public List<Property> resultProperties;
     String temp;
     String resultApp;
+    Button helpButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        helpButton = findViewById(R.id.helpButton);
 
 //        ImageView bg = findViewById(R.id.background);
 //        bg.setImageResource(getResources().getIdentifier("img1278", "drawable", getPackageName()));
@@ -54,9 +58,21 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        Button button = (Button) findViewById(R.id.searchButton);
-        button.setOnClickListener(this::onClick);
+        Button searchButton = (Button) findViewById(R.id.searchButton);
+        searchButton.setOnClickListener(this::onClick);
 
+        helpButton.setOnClickListener(view -> {
+            resetPrefs();
+            Intent introActivity = new Intent(getApplicationContext(), HelpIntroActivity.class);
+            startActivity(introActivity);
+        });
+    }
+
+    private void resetPrefs() {
+        SharedPreferences preferences = getApplicationContext().getSharedPreferences("myPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("isIntroOpened", false);
+        editor.commit();
     }
 
 
