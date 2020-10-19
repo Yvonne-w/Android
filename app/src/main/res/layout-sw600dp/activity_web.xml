@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/textViewWeb"
-        android:layout_width="291dp"
-        android:layout_height="326dp"
+        android:layout_width="431dp"
+        android:layout_height="436dp"
         android:layout_margin="1dp"
         android:layout_marginStart="1dp"
         android:layout_marginLeft="1dp"
@@ -23,20 +23,19 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.956"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.47" />
+        app:layout_constraintVertical_bias="0.865" />
 
     <ImageView
         android:id="@+id/imgWeb"
-        android:layout_width="328dp"
-        android:layout_height="335dp"
+        android:layout_width="411dp"
+        android:layout_height="421dp"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.016"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.52" />
+        app:layout_constraintVertical_bias="0.124" />
 </androidx.constraintlayout.widget.ConstraintLayout>
