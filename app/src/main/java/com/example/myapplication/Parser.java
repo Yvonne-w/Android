@@ -12,6 +12,7 @@ public class Parser {
     }
 
     public List<Requirement> parseExp() {
+        requirements = new ArrayList<Requirement>();
         while (_tokenizer.hasNext()) {
             StringBuilder key = new StringBuilder();
             while (_tokenizer.hasNext() && _tokenizer.current().type() == Token.Type.CHAR) {

@@ -106,13 +106,13 @@ public class MainActivity extends AppCompatActivity {
     private void onClick(View view) {
         EditText userInput = findViewById(R.id.searchText1);
         temp = userInput.getText().toString();
-
+        bsTree.result = new ArrayList<>();
         bsTree.inOrderTraverse(bsTree, temp.toLowerCase());
-        resultApp = bsTree.resultStr;
+//        resultApp = bsTree.resultStr;
         resultProperties = bsTree.result;
 
         Intent intent = new Intent(MainActivity.this, SearchResult.class);
-        intent.putExtra("resultStr", resultApp);
+//        intent.putExtra("resultStr", resultApp);
         intent.putExtra("resultList", (Serializable) resultProperties);
         startActivity(intent);
         userInput.getText().clear();
