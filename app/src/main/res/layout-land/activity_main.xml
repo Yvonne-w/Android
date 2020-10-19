@@ -53,7 +53,7 @@
         app:layout_constraintVertical_bias="0.478" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/helpButton"
         android:layout_width="65dp"
         android:layout_height="30dp"
         android:background="@drawable/btn_all_shape"
