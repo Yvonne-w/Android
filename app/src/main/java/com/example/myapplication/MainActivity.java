@@ -2,10 +2,12 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +21,7 @@ import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -30,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     String temp;
     String resultApp;
     Button helpButton;
+    ImageView imageView1;
+    ImageView imageView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         helpButton = findViewById(R.id.helpButton);
+        imageView1 = findViewById(R.id.pick1ImgView);
+        imageView2 = findViewById(R.id.pick2ImgView);
 
 //        ImageView bg = findViewById(R.id.background);
 //        bg.setImageResource(getResources().getIdentifier("img1278", "drawable", getPackageName()));
@@ -66,6 +73,12 @@ public class MainActivity extends AppCompatActivity {
             Intent introActivity = new Intent(getApplicationContext(), HelpIntroActivity.class);
             startActivity(introActivity);
         });
+
+        Random random = new Random();
+        int id1 = getResources().getIdentifier("img"+(1001+random.nextInt(1000)), "drawable", getPackageName());
+        imageView1.setImageResource(id1);
+        int id2 = getResources().getIdentifier("img"+(1001+random.nextInt(1000)), "drawable", getPackageName());
+        imageView2.setImageResource(id2);
     }
 
     private void resetPrefs() {
