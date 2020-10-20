@@ -94,7 +94,7 @@ public class BSTree {
             if (currentVal.equals(desiredVal)) {
                 mark += 20;
             }
-            return currentVal.equals(desiredVal);
+            return (currentVal.equals(desiredVal)||currentVal.contains(desiredVal));
         }
 
 

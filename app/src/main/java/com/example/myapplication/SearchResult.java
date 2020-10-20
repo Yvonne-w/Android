@@ -47,7 +47,7 @@ public class SearchResult extends AppCompatActivity {
 //        String res = intent.getStringExtra("resultStr");
 
         List<Property> resultList = (List<Property>) intent.getSerializableExtra("resultList");
-        System.out.println("check resultlist: "+resultList);
+//        System.out.println("check resultlist: "+resultList);
 
         assert resultList != null;
         if (resultList.size() >= 1) {

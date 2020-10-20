@@ -13,18 +13,21 @@ public class Parser {
 
     public List<Requirement> parseExp() {
         requirements = new ArrayList<Requirement>();
+
         while (_tokenizer.hasNext()) {
+            Requirement r = new Requirement();
+
             StringBuilder key = new StringBuilder();
             while (_tokenizer.hasNext() && _tokenizer.current().type() == Token.Type.CHAR) {
                 key.append(_tokenizer.current().token());
                 _tokenizer.next();
             }
 
-            Requirement r = new Requirement();
             if (key.length() == 0) {
                 key.append("price");
             }
             r.attribute = String.valueOf(key);
+
 
             if (_tokenizer.hasNext()) {
                 if (_tokenizer.current().type() == Token.Type.GREATER) {
@@ -41,8 +44,10 @@ public class Parser {
                 }
             } else {
                 r.condition = Condition.UNKNOWN;
+                r.value = String.valueOf(key);
+                requirements.add(r);
+                return requirements;
             }
-
 
             StringBuilder v = new StringBuilder();
             while (_tokenizer.hasNext() && _tokenizer.current().type() != Token.Type.SEP) {

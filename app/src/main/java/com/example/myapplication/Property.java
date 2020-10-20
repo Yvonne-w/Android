@@ -130,7 +130,7 @@ public class Property implements Comparable<Property>, Serializable {
                         "\nNumber of bedrooms: %d \n" +
                         "Number of bathrooms: %d \n" +
                         "Number of car spaces: %d \n" +
-                        "\nPetsallowed: %b; \n" +
+                        "\nPetsallowed: %b \n" +
                         "Managed by agent: %s \n",
                 this.type, this.state.getState(), this.price, this.suburb,
                 this.bedrooms, this.numBathrooms, this.numCarspaces, this.allowPets,
