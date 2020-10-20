@@ -14,7 +14,6 @@ public class ActivityWeb extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
 
-
         Intent intent = getIntent();
         Property pw = (Property) intent.getSerializableExtra("PropertyWeb");
 
@@ -22,6 +21,7 @@ public class ActivityWeb extends AppCompatActivity {
         assert pw != null;
         textView.setText(pw.description());
 
+        // retrive image from id
         ImageView iv = findViewById(R.id.imgWeb);
         int id = pw.getId();
         String picName = "img" + id;

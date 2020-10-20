@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 
 import java.util.List;
@@ -49,7 +48,7 @@ public class HelpIntroViewPagerAdapter extends PagerAdapter {
 //        }
 //    }
 
-//    Context context;
+    //    Context context;
 //    List<ScreenItem> screenItemList;
 //
     public HelpIntroViewPagerAdapter(Context mContext, List<ScreenItem> screenItemList) {

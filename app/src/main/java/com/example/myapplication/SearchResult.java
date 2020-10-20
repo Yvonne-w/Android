@@ -25,7 +25,6 @@ import java.util.List;
 public class SearchResult extends AppCompatActivity {
     @SuppressLint("StaticFieldLeak")
     private static MyAdapter adapter;
-//    String res;
     ListView listView;
     String[] mTitle;
     String[] mDescription;
@@ -44,15 +43,11 @@ public class SearchResult extends AppCompatActivity {
         }
 
         Intent intent = getIntent();
-//        String res = intent.getStringExtra("resultStr");
 
         List<Property> resultList = (List<Property>) intent.getSerializableExtra("resultList");
-//        System.out.println("check resultlist: "+resultList);
 
         assert resultList != null;
         if (resultList.size() >= 1) {
-//            String[] tokens = res.split("Property");
-
             int n = resultList.size();
             mTitle = new String[n];
             mDescription = new String[n];
@@ -83,7 +78,6 @@ public class SearchResult extends AppCompatActivity {
                 Toast.makeText(SearchResult.this, "Clicked", Toast.LENGTH_LONG)
                         .show();
                 Intent intent = new Intent(SearchResult.this,ActivityWeb.class);
-//                intent.putExtra("PropertyStr",resultList.get(position).toString());
                 intent.putExtra("PropertyWeb",resultList.get(position));
                 startActivity(intent);
             }
