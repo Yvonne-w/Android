@@ -157,13 +157,12 @@ public class Property implements Comparable<Property>, Serializable {
         String finalAmount = formatter.format(amount);
 
         return  state.toString().toUpperCase() +
-                " | " + type.toString().toUpperCase() +
-                " \n" + finalAmount +
+                " | " + type.toString().toUpperCase() + ": $" + Math.floor(price) +
                 " \n" + suburb.toString().toUpperCase() +
                 " | " + postcode +
                 " \nRoom(s): " + bedrooms +
-                " Bathroom(s): " + numBathrooms +
-                " Carspace(s): " + numCarspaces +
+                " \nBathroom(s): " + numBathrooms +
+                " \nCarspace(s): " + numCarspaces +
                 " \n" + agent.toString().toUpperCase() +
                 " \nPets = " + allowPets;
     }

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     Button helpButton;
     ImageView imageView1;
     ImageView imageView2;
+    TextView pick1TV;
+    TextView pick2TV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
         helpButton = findViewById(R.id.helpButton);
         imageView1 = findViewById(R.id.pick1ImgView);
         imageView2 = findViewById(R.id.pick2ImgView);
+        pick1TV = findViewById(R.id.pick1TV);
+        pick2TV = findViewById(R.id.pick2TV);
 
 //        ImageView bg = findViewById(R.id.background);
 //        bg.setImageResource(getResources().getIdentifier("img1278", "drawable", getPackageName()));
@@ -75,10 +80,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Random random = new Random();
-        int id1 = getResources().getIdentifier("img"+(1001+random.nextInt(1000)), "drawable", getPackageName());
+        int randomSelect1 = random.nextInt(1000);
+        int id1 = getResources().getIdentifier("img"+(1001+randomSelect1), "drawable", getPackageName());
         imageView1.setImageResource(id1);
-        int id2 = getResources().getIdentifier("img"+(1001+random.nextInt(1000)), "drawable", getPackageName());
+        pick1TV.setText(properties.get(randomSelect1).toString());
+        int randomSelect2 = random.nextInt(1000);
+        int id2 = getResources().getIdentifier("img"+(1001+randomSelect2), "drawable", getPackageName());
         imageView2.setImageResource(id2);
+        pick2TV.setText(properties.get(randomSelect2).toString());
     }
 
     private void resetPrefs() {
