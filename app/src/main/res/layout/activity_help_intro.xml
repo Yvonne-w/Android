@@ -45,7 +45,7 @@
         android:drawableRight="@drawable/ic_baseline_arrow_forward_ios_24"
         android:drawableTint="@color/gradient_start_color"
         android:text="Next"
-        android:textColor="@color/gradient_start_color"
+        android:textColor="@color/intro_title_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tab_indicator" />
