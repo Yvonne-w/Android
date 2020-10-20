@@ -53,7 +53,7 @@ public class HelpIntroActivity extends AppCompatActivity {
         List<ScreenItem> screenItemList = new ArrayList<>();
         screenItemList.add(new ScreenItem("Use key words", "Use key words like price, bedroom, carspace to refine your choices of preferences", R.drawable.keywords));
         screenItemList.add(new ScreenItem("Use symbols", "Use symbols like <, >, = to limit your scope and ; to separate your conditions.", R.drawable.symbols));
-        screenItemList.add(new ScreenItem("Have fun!", "We also support blurry search, e.g., if you only type bel, we can still get you perfect houses in Belconnen!", R.drawable.havefun));
+        screenItemList.add(new ScreenItem("Have fun!", "We also support search by abbreviation, e.g., if you only type bel, we can still get you perfect houses in Belconnen!", R.drawable.havefun));
 
         // set up the viewpager2(diff between viewpager and vp2?)
         screenPager = findViewById(R.id.screen_viewpager);
