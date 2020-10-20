@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         int id1 = getResources().getIdentifier("img"+(1001+randomSelect1), "drawable", getPackageName());
         imageView1.setImageResource(id1);
         pick1TV.setText(properties.get(randomSelect1).toString());
-        int randomSelect2 = random.nextInt(1000);
+        int randomSelect2 = (randomSelect1+1)%1000;
         int id2 = getResources().getIdentifier("img"+(1001+randomSelect2), "drawable", getPackageName());
         imageView2.setImageResource(id2);
         pick2TV.setText(properties.get(randomSelect2).toString());

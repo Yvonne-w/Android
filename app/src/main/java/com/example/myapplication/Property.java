@@ -157,7 +157,7 @@ public class Property implements Comparable<Property>, Serializable {
         String finalAmount = formatter.format(amount);
 
         return  state.toString().toUpperCase() +
-                " | " + type.toString().toUpperCase() + ": $" + Math.floor(price) +
+                " | " + type.toString().toUpperCase() + String.format(": $%.0f", price)  +
                 " \n" + suburb.toString().toUpperCase() +
                 " | " + postcode +
                 " \nRoom(s): " + bedrooms +
