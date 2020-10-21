@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, SearchResult.class);
                 intent.putExtra("resultList", (Serializable) resultProperties);
                 startActivity(intent);
-            }else{
+            } else {
                 Toast.makeText(MainActivity.this, "Invalid input", Toast.LENGTH_LONG).show();
             }
 

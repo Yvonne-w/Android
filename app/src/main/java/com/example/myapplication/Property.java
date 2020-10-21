@@ -156,7 +156,7 @@ public class Property implements Comparable<Property>, Serializable {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         String finalAmount = formatter.format(amount);
 
-        return  state.toString().toUpperCase() +
+        return state.toString().toUpperCase() +
                 " | " + type.toString().toUpperCase() + ": $" + Math.floor(price) +
                 " \n" + suburb.toString().toUpperCase() +
                 " | " + postcode +
@@ -168,17 +168,16 @@ public class Property implements Comparable<Property>, Serializable {
     }
 
     public String getAttribute(String s) {
-        if(s.contains("rent")||s.contains("sale")||s.contains("auction")||s.contains("share")){
+        if (s.contains("rent") || s.contains("sale") || s.contains("auction") || s.contains("share")) {
             return String.valueOf(this.getState());
-        }
-        else if(s.contains("house")||s.contains("unit")||s.contains("townhouse")||s.contains("flat")||s.contains("apart")||s.contains("dup")){
-            //house, unit, townhouse, flat, apartment, duplex;
+        } else if (s.contains("house") || s.contains("unit") || s.contains("townhouse") || s.contains("flat") || s.contains("apart") || s.contains("dup")) {
+//            house, unit, townhouse, flat, apartment, duplex;
             return String.valueOf(this.getType());
-        }else if(s.contains("bel")||s.contains("cit")||s.contains("gun")||s.contains("jer")||s.contains("maj")||s.contains("mol")||s.contains("val")||s.contains("tug")||s.contains("west")||s.contains("woden")||s.contains("dis")){
+        } else if (s.contains("bel") || s.contains("cit") || s.contains("gun") || s.contains("jer") || s.contains("maj") || s.contains("mol") || s.contains("val") || s.contains("tug") || s.contains("west") || s.contains("woden") || s.contains("dis")) {
 //            belconnen, city, gungahlin, jerrabomberra, majura, molonglo_Valley,
 //                    tuggeranong, weston_Creek, woden_Valley;
             return String.valueOf(this.getSuburb());
-        }else if(s.contains("lut")||s.contains("str")||s.contains("uni")||s.contains("lj")||s.contains("bolton")||s.contains("lodge")||s.contains("mountain")||s.contains("ver")||s.contains("west")||s.contains("ray")||s.contains("harcourts")){
+        } else if (s.contains("lut") || s.contains("str") || s.contains("uni") || s.contains("lj") || s.contains("bolton") || s.contains("lodge") || s.contains("mountain") || s.contains("ver") || s.contains("west") || s.contains("ray") || s.contains("harcourts")) {
 //            luton, strive, badenoch, above, rayWhite, harcourts, uniGardens, lj_hooker, bolton,
 //                    mountain, veriton, jada, smart_home_creation, mangolilly, action_advantage, unilodge;
             return String.valueOf(this.getAgent());
