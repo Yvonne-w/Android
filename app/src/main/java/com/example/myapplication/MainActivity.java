@@ -2,13 +2,13 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -46,16 +46,12 @@ public class MainActivity extends AppCompatActivity {
 
         helpButton = findViewById(R.id.helpButton);
         imageView1 = findViewById(R.id.pick1ImgView);
-        imageView2 = findViewById(R.id.pick2ImgView);
+//        imageView2 = findViewById(R.id.pick2ImgView);
         pick1TV = findViewById(R.id.pick1TV);
-        pick2TV = findViewById(R.id.pick2TV);
-
-//        ImageView bg = findViewById(R.id.background);
-//        bg.setImageResource(getResources().getIdentifier("img1278", "drawable", getPackageName()));
+//        pick2TV = findViewById(R.id.pick2TV);
 
         List<Property> properties = new ArrayList<>();
         bsTree = new BSTree();
-
         temp = "";
         resultApp = "";
         resultProperties = new ArrayList<>();
@@ -81,13 +77,13 @@ public class MainActivity extends AppCompatActivity {
 
         Random random = new Random();
         int randomSelect1 = random.nextInt(1000);
-        int id1 = getResources().getIdentifier("img"+(1001+randomSelect1), "drawable", getPackageName());
+        int id1 = getResources().getIdentifier("img" + (1001 + randomSelect1), "drawable", getPackageName());
         imageView1.setImageResource(id1);
         pick1TV.setText(properties.get(randomSelect1).toString());
-        int randomSelect2 = random.nextInt(1000);
-        int id2 = getResources().getIdentifier("img"+(1001+randomSelect2), "drawable", getPackageName());
-        imageView2.setImageResource(id2);
-        pick2TV.setText(properties.get(randomSelect2).toString());
+//        int randomSelect2 = random.nextInt(1000);
+//        int id2 = getResources().getIdentifier("img"+(1001+randomSelect2), "drawable", getPackageName());
+//        imageView2.setImageResource(id2);
+//        pick2TV.setText(properties.get(randomSelect2).toString());
     }
 
     private void resetPrefs() {
@@ -96,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
         editor.putBoolean("isIntroOpened", false);
         editor.commit();
     }
-
 
     public List<Property> loadData(String filename) throws IOException {
         InputStream f = getAssets().open(filename);
@@ -145,14 +140,25 @@ public class MainActivity extends AppCompatActivity {
         EditText userInput = findViewById(R.id.searchText1);
         temp = userInput.getText().toString();
         bsTree.result = new ArrayList<>();
+
         bsTree.inOrderTraverse(bsTree, temp.toLowerCase());
-//        resultApp = bsTree.resultStr;
         resultProperties = bsTree.result;
 
-        Intent intent = new Intent(MainActivity.this, SearchResult.class);
-//        intent.putExtra("resultStr", resultApp);
-        intent.putExtra("resultList", (Serializable) resultProperties);
-        startActivity(intent);
-        userInput.getText().clear();
+        try {
+
+            if (resultProperties.size() >= 1) {
+                Intent intent = new Intent(MainActivity.this, SearchResult.class);
+                intent.putExtra("resultList", (Serializable) resultProperties);
+                startActivity(intent);
+            }else{
+                Toast.makeText(MainActivity.this, "Invalid input", Toast.LENGTH_LONG).show();
+            }
+
+            userInput.getText().clear();
+        } catch (Exception e) {
+            Toast.makeText(MainActivity.this, "Invalid input", Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
+
     }
 }

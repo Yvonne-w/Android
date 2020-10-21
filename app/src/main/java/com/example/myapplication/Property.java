@@ -157,7 +157,7 @@ public class Property implements Comparable<Property>, Serializable {
         String finalAmount = formatter.format(amount);
 
         return  state.toString().toUpperCase() +
-                " | " + type.toString().toUpperCase() + String.format(": $%.0f", price)  +
+                " | " + type.toString().toUpperCase() + ": $" + Math.floor(price) +
                 " \n" + suburb.toString().toUpperCase() +
                 " | " + postcode +
                 " \nRoom(s): " + bedrooms +
@@ -169,7 +169,7 @@ public class Property implements Comparable<Property>, Serializable {
 
     public String getAttribute(String s) {
         if(s.contains("rent")||s.contains("sale")||s.contains("auction")||s.contains("share")){
-           return String.valueOf(this.getState());
+            return String.valueOf(this.getState());
         }
         else if(s.contains("house")||s.contains("unit")||s.contains("townhouse")||s.contains("flat")||s.contains("apart")||s.contains("dup")){
             //house, unit, townhouse, flat, apartment, duplex;

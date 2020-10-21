@@ -8,24 +8,16 @@ public class Parser {
 
     public Parser(Tokenizer tokenizer) {
         _tokenizer = tokenizer;
-        requirements = new ArrayList<>();
+        requirements = new ArrayList<Requirement>();
     }
 
     public List<Requirement> parseExp() {
-        requirements = new ArrayList<>();
+        requirements = new ArrayList<Requirement>();
 
         while (_tokenizer.hasNext()) {
             Requirement r = new Requirement();
-            //match to attribute
+
             StringBuilder key = new StringBuilder();
-            if(_tokenizer.current().type()==Token.Type.NOT){
-                _tokenizer.next();
-                while(_tokenizer.current().type()!=Token.Type.SEP||_tokenizer.hasNext()){
-                    key.append(_tokenizer.current().token());
-                    _tokenizer.next();
-                }
-            }
-            System.out.println(key);
             while (_tokenizer.hasNext() && _tokenizer.current().type() == Token.Type.CHAR) {
                 key.append(_tokenizer.current().token());
                 _tokenizer.next();
@@ -36,7 +28,7 @@ public class Parser {
             }
             r.attribute = String.valueOf(key);
 
-            //match to condition
+
             if (_tokenizer.hasNext()) {
                 if (_tokenizer.current().type() == Token.Type.GREATER) {
                     r.condition = Condition.valueOf(_tokenizer.current().token());
@@ -47,12 +39,8 @@ public class Parser {
                 } else if (_tokenizer.current().type() == Token.Type.EQUAL) {
                     r.condition = Condition.valueOf(_tokenizer.current().token());
                     _tokenizer.next();
-                }  else if (_tokenizer.current().type() == Token.Type.NOT) {
-                    r.condition = Condition.valueOf(_tokenizer.current().token());
-
-                }else {
+                } else {
                     r.condition = Condition.UNKNOWN;
-                    _tokenizer.next();
                 }
             } else {
                 r.condition = Condition.UNKNOWN;
@@ -61,7 +49,6 @@ public class Parser {
                 return requirements;
             }
 
-            //compare value
             StringBuilder v = new StringBuilder();
             while (_tokenizer.hasNext() && _tokenizer.current().type() != Token.Type.SEP) {
                 v.append(_tokenizer.current().token());
