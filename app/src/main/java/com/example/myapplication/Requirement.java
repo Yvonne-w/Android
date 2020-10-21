@@ -11,6 +11,12 @@ public class Requirement {
         this.value = "";
     }
 
+    public Requirement(String attribute, Condition condition, String value) {
+        this.attribute = attribute;
+        this.condition = condition;
+        this.value = value;
+    }
+
     @Override
     public String toString() {
         return "Requirement{" +
@@ -18,6 +24,26 @@ public class Requirement {
                 ", condition=" + condition +
                 ", value='" + value + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Requirement)) return false;
+        Requirement requirement = (Requirement) o;
+        return this.value.equals(requirement.value)  && this.condition.equals(requirement.condition) && this.attribute.equals(requirement.attribute);
+    }
+
+    public String getAttribute() {
+        return attribute;
+    }
+
+    public Condition getCondition() {
+        return condition;
+    }
+
+    public String getValue() {
+        return value;
     }
 }
 

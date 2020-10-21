@@ -8,15 +8,16 @@ public class Parser {
 
     public Parser(Tokenizer tokenizer) {
         _tokenizer = tokenizer;
-        requirements = new ArrayList<Requirement>();
+        requirements = new ArrayList<>();
     }
 
     public List<Requirement> parseExp() {
-        requirements = new ArrayList<Requirement>();
+        requirements = new ArrayList<>();
 
         while (_tokenizer.hasNext()) {
             Requirement r = new Requirement();
 
+            // 1. first extract the keywords as attributes
             StringBuilder key = new StringBuilder();
             while (_tokenizer.hasNext() && _tokenizer.current().type() == Token.Type.CHAR) {
                 key.append(_tokenizer.current().token());
@@ -28,7 +29,7 @@ public class Parser {
             }
             r.attribute = String.valueOf(key);
 
-
+            // 2. then extract the comparator symbols
             if (_tokenizer.hasNext()) {
                 if (_tokenizer.current().type() == Token.Type.GREATER) {
                     r.condition = Condition.valueOf(_tokenizer.current().token());
@@ -49,6 +50,7 @@ public class Parser {
                 return requirements;
             }
 
+            // 3. third, extract the value before the separator ;
             StringBuilder v = new StringBuilder();
             while (_tokenizer.hasNext() && _tokenizer.current().type() != Token.Type.SEP) {
                 v.append(_tokenizer.current().token());
@@ -62,20 +64,20 @@ public class Parser {
 
             requirements.add(r);
 
+            // 4. skip the ;
             if (_tokenizer.hasNext() && _tokenizer.current().type() == Token.Type.SEP) {
                 _tokenizer.next();
-                continue;
             }
         }
         return requirements;
     }
 
 
-    @Override
-    public String toString() {
-        return "Parser{" +
-                "requirements=" + requirements +
-                ", _tokenizer=" + _tokenizer +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Parser{" +
+//                "requirements=" + requirements +
+//                ", _tokenizer=" + _tokenizer +
+//                '}';
+//    }
 }

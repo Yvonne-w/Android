@@ -9,7 +9,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class TokenizerTest {
-    @Test
+    @Test(timeout=1000)
     public void testSingle() {
         // test single tokens of ; > = < and chars, digits
         Tokenizer semicolon = new Tokenizer(";");
@@ -39,7 +39,7 @@ public class TokenizerTest {
         System.out.println(digits.current().token());
     }
 
-    @Test
+    @Test(timeout=1000)
     public void testMultiple() {
         Tokenizer example1 = new Tokenizer("price < 300");
         StringBuilder ex1Tokens = new StringBuilder();
