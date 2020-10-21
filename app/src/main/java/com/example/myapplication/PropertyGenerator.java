@@ -82,6 +82,10 @@ public class PropertyGenerator {
         }
         propertyGenerator = new PropertyGenerator(properties);
         System.out.println("Number of properties generated: " + properties.size());
+//        File file = new File("sample_properties.txt");
+//        file.delete();
+//        propertyGenerator.saveToJSONFile(new File("sample_properties.json"));
+//        propertyGenerator.saveToTxtFile(file);
         propertyGenerator.saveToXML("sample_properties.xml");
 
         return propertyGenerator;

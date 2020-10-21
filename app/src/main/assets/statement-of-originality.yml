@@ -45,19 +45,7 @@ declaration: >-
 assets:
   - comment: the pictures of the houses/rooms are downloaded from website www.allhome.com.au for non-commercial use only, and it is not intended to compete with All Homes Pty Ltd in any way.
     url: https://www.allhomes.com.au
-    licence: NA, only used for learning purpose, no commericial use
-
-  - comment: Help from Youtube channel to set up help page
-    url: https://www.youtube.com/watch?v=pwcG6npiXyo
-    licence: NA, only used for learning purpose, no commericial use
-
-  - comment: CustomAdapter
-    url: https://www.youtube.com/watch?v=5Tm--PHhbJo
-    licence: NA, only used for learning purpose, no commericial use
-
-  - comment: Button radius
-    url: https://blog.csdn.net/weixin_42199142/article/details/83903520
-    licence: NA, only used for learning purpose, no commericial use
+    licence:
 
 
 # Sign *your* name and uids here. (Remove entries if you have fewer

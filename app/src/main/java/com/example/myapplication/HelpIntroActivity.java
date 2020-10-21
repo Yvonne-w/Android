@@ -1,13 +1,18 @@
 package com.example.myapplication;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Adapter;
 import android.widget.Button;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -67,7 +72,7 @@ public class HelpIntroActivity extends AppCompatActivity {
                     position++;
                     screenPager.setCurrentItem(position);
                 }
-                if (position == screenItemList.size() - 1) {
+                if (position == screenItemList.size()-1){
                     // getstarted button and 
                     loadLastScreen();
                 }
@@ -78,7 +83,7 @@ public class HelpIntroActivity extends AppCompatActivity {
         tabIndicator.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if (tab.getPosition() == screenItemList.size() - 1) {
+                if (tab.getPosition() == screenItemList.size()-1) {
                     loadLastScreen();
                 }
             }

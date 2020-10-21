@@ -38,15 +38,11 @@ public class Tokenizer {
             currentToken = new Token("EQUAL", Token.Type.EQUAL);
             tokenLen = 1;
         }
-        if (firstChar == '~') {
-            currentToken = new Token("NOT", Token.Type.NOT);
-            tokenLen = 1;
-        }
 
-        if (Character.isDigit(firstChar) || firstChar == '.') {
+        if (Character.isDigit(firstChar)) {
             String s = String.valueOf(firstChar);
             int i = 1;
-            while (i < buffer.length() && (Character.isDigit(buffer.charAt(i)) || firstChar == '.')) {
+            while (i < buffer.length() && Character.isDigit(buffer.charAt(i))) {
                 s = s + buffer.charAt(i);
                 i++;
             }

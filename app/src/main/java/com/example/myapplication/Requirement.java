@@ -22,7 +22,7 @@ public class Requirement {
 }
 
 enum Condition {
-    GREATER, LESS, EQUAL, UNKNOWN,NOT
+    GREATER, LESS, EQUAL, UNKNOWN
 }
 
 

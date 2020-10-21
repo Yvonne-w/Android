@@ -1,7 +1,7 @@
 package com.example.myapplication;
 
 public class Token {
-    public enum Type {UNKNOWN, INT, CHAR, SEP, GREATER, LESS, EQUAL, NOT}
+    public enum Type {UNKNOWN, INT, CHAR, SEP, GREATER, LESS, EQUAL}
 
     private String _token = "";
     private Type _type = Type.UNKNOWN;

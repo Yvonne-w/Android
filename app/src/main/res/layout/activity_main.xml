@@ -25,102 +25,173 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.244" />
+        app:layout_constraintVertical_bias="0.055" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/searchText1"
         android:layout_width="330dp"
         android:layout_height="50dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
         android:width="1dp"
         android:hint="type in keywords and symbols..."
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.395" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.021" />
 
     <Button
         android:id="@+id/searchButton"
-        android:layout_width="93dp"
-        android:layout_height="38dp"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
         android:layout_marginStart="1dp"
         android:layout_marginLeft="2dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="1dp"
         android:layout_marginRight="2dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/btn_all_shape"
         android:text="Search"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/tableRow"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.31"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintTop_toBottomOf="@+id/searchText1" />
 
     <Button
         android:id="@+id/helpButton"
-        android:layout_width="93dp"
-        android:layout_height="38dp"
+        android:layout_width="88dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/btn_all_shape"
         android:text="Help"
-        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.668"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintTop_toBottomOf="@+id/searchButton"
+        app:layout_constraintVertical_bias="0.957" />
 
     <ImageView
         android:id="@+id/pick1ImgView"
-        android:layout_width="239dp"
-        android:layout_height="218dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.093"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/pick2ImgView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.937"
+        app:layout_constraintTop_toBottomOf="@+id/todayPickTV"
         app:srcCompat="@mipmap/ic_launcher_round" />
+
+    <TextView
+        android:id="@+id/pick2TV"
+        android:layout_width="180dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="50dp"
+        android:text="Deal2"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/helpButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/pick1TV"
+        app:layout_constraintTop_toBottomOf="@+id/pick2ImgView" />
+
+    <ImageView
+        android:id="@+id/pick2ImgView"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pick1ImgView"
+        app:layout_constraintTop_toBottomOf="@+id/todayPickTV"
+        app:srcCompat="@mipmap/ic_launcher_round" />
+
+    <TextView
+        android:id="@+id/pick1TV"
+        android:layout_width="180dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="50dp"
+        android:text="Deal1"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/helpButton"
+        app:layout_constraintEnd_toStartOf="@+id/pick2TV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pick1ImgView" />
 
     <TextView
         android:id="@+id/todayPickTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="serif"
-        android:text="Featured Property"
-        android:textColor="#4CAF50"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
+        android:fontFamily="monospace"
+        android:text="Today's Pick for You"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.616" />
+        app:layout_constraintTop_toBottomOf="@+id/searchButton" />
 
     <TableRow
         android:id="@+id/tableRow"
         android:layout_width="300dp"
         android:layout_height="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginBottom="15dp"
         android:background="@color/tab_indicator_gray"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/todayPickTV"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.639" />
+        app:layout_constraintTop_toBottomOf="@+id/searchButton" />
 
-    <TextView
-        android:id="@+id/pick1TV"
-        android:layout_width="137dp"
-        android:layout_height="185dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TableRow
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/tab_indicator_gray"
+        app:layout_constraintBottom_toTopOf="@+id/helpButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.981"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.923" />
+        app:layout_constraintTop_toBottomOf="@+id/pick2TV" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

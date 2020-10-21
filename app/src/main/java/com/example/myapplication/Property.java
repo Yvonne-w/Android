@@ -182,8 +182,6 @@ public class Property implements Comparable<Property>, Serializable {
 //            luton, strive, badenoch, above, rayWhite, harcourts, uniGardens, lj_hooker, bolton,
 //                    mountain, veriton, jada, smart_home_creation, mangolilly, action_advantage, unilodge;
             return String.valueOf(this.getAgent());
-        }else if(s.charAt(0)=='~'){
-            return getAttribute(s.substring(1));
         }
 
         switch (s) {

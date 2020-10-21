@@ -2,34 +2,38 @@ package com.example.myapplication;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class BSTree {
     Property property;
     BSTree left, right;
     List<Property> result;
+    String resultStr;
+    int mark;
+    PriorityQueue pq = new PriorityQueue();
 
     BSTree(Property property) {
         this.property = property;
         this.left = new BSTree();
         this.right = new BSTree();
         this.result = new ArrayList<>();
+        resultStr = "";
+        this.mark = 0;
     }
 
     BSTree() {
         this.property = new Property();
         this.result = new ArrayList<>();
+        resultStr = "";
+        this.mark = 0;
     }
 
-    /**
-     * Add property by comparing the id
-     * @param element
-     * @return whether the element is added
-     */
     boolean add(Property element) {
         if (this.property == null || this.property.id == 0) {
             this.property = element;
             return true;
         }
+
         if (element.compareTo(property) < 0) {
             if (left == null) {
                 left = new BSTree(element);
@@ -53,20 +57,17 @@ public class BSTree {
             if (x.property.id != 0) {
                 if (x.checkConditions(exp)) {
                     result.add(x.property);
+                    resultStr += x.property.toString();
                 }
             }
             inOrderTraverse(x.right, exp);
         }
     }
 
-    /**
-     * Iteratively check the list of requirements
-     * @param exp
-     * @return  a boolean for the list of requirements
-     */
     private boolean checkConditions(String exp) {
         Tokenizer t = new Tokenizer(exp);
         List<Requirement> requirements = new Parser(t).parseExp();
+
         for (Requirement r : requirements) {
             if (!checkAttribute(r)) {
                 return false;
@@ -75,30 +76,28 @@ public class BSTree {
         return true;
     }
 
-    /**
-     * An important method to handle the condition
-     * @param r
-     * @return Whether the current binary tree property satisfy the condition
-     */
     public boolean checkAttribute(Requirement r) {
         String currentVal = this.property.getAttribute(r.attribute);
         String desiredVal = r.value;
 
         if (r.condition == Condition.GREATER) {
-//            if (Double.parseDouble(currentVal) > Double.parseDouble(desiredVal)) {
-//            }
+            if (Double.parseDouble(currentVal) > Double.parseDouble(desiredVal)) {
+                mark += 20;
+            }
             return Double.parseDouble(currentVal) > Double.parseDouble(desiredVal);
         } else if (r.condition == Condition.LESS) {
-//            if (Double.parseDouble(currentVal) < Double.parseDouble(desiredVal)) {
-//            }
+            if (Double.parseDouble(currentVal) < Double.parseDouble(desiredVal)) {
+                mark += 20;
+            }
             return Double.parseDouble(currentVal) < Double.parseDouble(desiredVal);
-        } else if (r.condition == Condition.EQUAL || r.condition == Condition.UNKNOWN) {
-//            if (currentVal.equals(desiredVal)) {
-//            }
-            return (currentVal.equals(desiredVal) || currentVal.contains(desiredVal));
-        }else if(r.condition ==Condition.NOT){
-            return (!currentVal.equals(desiredVal));
+        } else if (r.condition == Condition.EQUAL||r.condition ==Condition.UNKNOWN) {
+            if (currentVal.equals(desiredVal)) {
+                mark += 20;
+            }
+            return (currentVal.equals(desiredVal)||currentVal.contains(desiredVal));
         }
+
+
         return true;
     }
 
