@@ -15,6 +15,7 @@ public class TokenizerTest {
         Tokenizer semicolon = new Tokenizer(";");
         assertEquals(Token.Type.SEP, semicolon.current().type());
         assertEquals(1, semicolon.tokenLen);
+//        assertEquals(";", semicolon.getBuffer());
 
         Tokenizer greater = new Tokenizer(">");
         assertEquals(Token.Type.GREATER, greater.current().type());
@@ -41,25 +42,25 @@ public class TokenizerTest {
     @Test
     public void testMultiple() {
         Tokenizer example1 = new Tokenizer("price < 300");
-        String ex1Tokens = "";
+        StringBuilder ex1Tokens = new StringBuilder();
         List<Token.Type> ex1TokenTypes = new ArrayList<>();
         while (example1.hasNext()) {
-            ex1Tokens += example1.current().token();
+            ex1Tokens.append(example1.current().token());
             ex1TokenTypes.add(example1.current().type());
             example1.next();
         }
-        assertEquals("priceLESS300", ex1Tokens);
-        assertEquals(new ArrayList<Token.Type>(Arrays.asList(Token.Type.CHAR, Token.Type.CHAR, Token.Type.CHAR, Token.Type.CHAR, Token.Type.CHAR, Token.Type.LESS, Token.Type.INT)), ex1TokenTypes);
+        assertEquals("priceLESS300", ex1Tokens.toString());
+        assertEquals(new ArrayList<>(Arrays.asList(Token.Type.CHAR, Token.Type.CHAR, Token.Type.CHAR, Token.Type.CHAR, Token.Type.CHAR, Token.Type.LESS, Token.Type.INT)), ex1TokenTypes);
 
         Tokenizer example2 = new Tokenizer("p>500; br=3");
-        String ex2Tokens = "";
+        StringBuilder ex2Tokens = new StringBuilder();
         List<Token.Type> ex2TokenTypes = new ArrayList<>();
         while (example2.hasNext()) {
-            ex2Tokens += example2.current().token();
+            ex2Tokens.append(example2.current().token());
             ex2TokenTypes.add(example2.current().type());
             example2.next();
         }
-        assertEquals("pGREATER500;brEQUAL3", ex2Tokens);
+        assertEquals("pGREATER500;brEQUAL3", ex2Tokens.toString());
         assertEquals(new ArrayList<>(Arrays.asList(Token.Type.CHAR, Token.Type.GREATER, Token.Type.INT, Token.Type.SEP, Token.Type.CHAR, Token.Type.CHAR, Token.Type.EQUAL, Token.Type.INT)), ex2TokenTypes);
 
 

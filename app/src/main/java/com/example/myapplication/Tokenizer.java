@@ -38,13 +38,13 @@ public class Tokenizer {
         }
 
         if (Character.isDigit(firstChar)) {
-            String s = String.valueOf(firstChar);
+            StringBuilder s = new StringBuilder(String.valueOf(firstChar));
             int i = 1;
             while (i < buffer.length() && Character.isDigit(buffer.charAt(i))) {
-                s = s + buffer.charAt(i);
+                s.append(buffer.charAt(i));
                 i++;
             }
-            currentToken = new Token(s, Token.Type.INT);
+            currentToken = new Token(s.toString(), Token.Type.INT);
             tokenLen = currentToken.token().length();
         }
 
@@ -64,6 +64,6 @@ public class Tokenizer {
         return currentToken != null;
     }
 
-    public String getBuffer() {return buffer;}
+//    public String getBuffer() {return buffer;}
 
 }
