@@ -19,7 +19,8 @@ public class Parser {
             //match to attribute
             StringBuilder key = new StringBuilder();
             if(_tokenizer.current().type()==Token.Type.NOT){
-                while(_tokenizer.current().type()!=Token.Type.SEP&&_tokenizer.hasNext()){
+                _tokenizer.next();
+                while(_tokenizer.current().type()!=Token.Type.SEP||_tokenizer.hasNext()){
                     key.append(_tokenizer.current().token());
                     _tokenizer.next();
                 }

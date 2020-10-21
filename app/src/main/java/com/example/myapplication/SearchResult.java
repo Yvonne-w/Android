@@ -68,7 +68,14 @@ public class SearchResult extends AppCompatActivity {
             }
         }
 
-        MyAdapter adapter = new MyAdapter(this, mTitle, mDescription, images);
+        try {
+            MyAdapter adapter = new MyAdapter(this, mTitle, mDescription, images);
+        } catch (Exception e) {
+            Toast.makeText(SearchResult.this, "Oops...Invalid input", Toast.LENGTH_LONG).show();
+            Intent intent2 = new Intent(SearchResult.this, Activity_noresults.class);
+            startActivity(intent2);
+            e.printStackTrace();
+        }
 
         listView.setAdapter(adapter);
 
@@ -77,8 +84,8 @@ public class SearchResult extends AppCompatActivity {
             public void onItemClick(AdapterView<?> a, View v, int position, long id) {
                 Toast.makeText(SearchResult.this, "Clicked", Toast.LENGTH_LONG)
                         .show();
-                Intent intent = new Intent(SearchResult.this,ActivityWeb.class);
-                intent.putExtra("PropertyWeb",resultList.get(position));
+                Intent intent = new Intent(SearchResult.this, ActivityWeb.class);
+                intent.putExtra("PropertyWeb", resultList.get(position));
                 startActivity(intent);
             }
         });
