@@ -12,10 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity_noresults"></activity>
         <activity android:name=".ActivityWeb" />
         <activity android:name=".SearchResult" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity">
+        </activity>
         <activity android:name=".HelpIntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
