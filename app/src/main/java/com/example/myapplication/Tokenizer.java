@@ -4,13 +4,11 @@ public class Tokenizer {
 
     private String buffer;
     private Token currentToken;
-    public int tokenLen;
+    public int tokenLen = 0;
 
     public Tokenizer(String text) {
         buffer = text;
         next();
-        tokenLen = 0;
-
     }
 
     public void next() {
@@ -65,5 +63,7 @@ public class Tokenizer {
     public boolean hasNext() {
         return currentToken != null;
     }
+
+    public String getBuffer() {return buffer;}
 
 }
