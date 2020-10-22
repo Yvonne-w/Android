@@ -75,7 +75,6 @@ public class SearchResult extends AppCompatActivity {
                 Toast.makeText(SearchResult.this, "Clicked", Toast.LENGTH_LONG)
                         .show();
                 Intent intent = new Intent(SearchResult.this,ActivityWeb.class);
-//                intent.putExtra("PropertyStr",resultList.get(position).toString());
                 intent.putExtra("PropertyWeb",resultList.get(position));
                 startActivity(intent);
             }

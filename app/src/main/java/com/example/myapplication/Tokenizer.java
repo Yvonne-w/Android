@@ -64,6 +64,4 @@ public class Tokenizer {
         return currentToken != null;
     }
 
-//    public String getBuffer() {return buffer;}
-
 }

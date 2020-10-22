@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 
 import java.util.List;
@@ -16,42 +15,7 @@ import java.util.List;
 public class HelpIntroViewPagerAdapter extends PagerAdapter {
     Context context;
     List<ScreenItem> screenItemList;
-//    @NonNull
-//    @Override
-//    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        View layoutScreen = LayoutInflater.from(context).inflate(R.layout.layout_screen, parent, false);
-//        return new MyViewHolder(layoutScreen);
-//
-//    }
-//
-//    @Override
-//    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-//        holder.textViewName.setText();
-//
-//    }
-//
-//    @Override
-//    public int getItemCount() {
-//        return screenItemList.size();
-//    }
-//
-//    public HelpIntroViewPagerAdapter(Context context, List<ScreenItem> screenItemList) {
-//        this.context = context;
-//        this.screenItemList = screenItemList;
-//    }
-//
-//    public class MyViewHolder extends RecyclerView.ViewHolder {
-//        TextView textViewName;
-//
-//        public MyViewHolder(@NonNull View itemView) {
-//            super(itemView);
-//            textViewName = itemView.findViewById(R.id.textViewName);
-//        }
-//    }
 
-//    Context context;
-//    List<ScreenItem> screenItemList;
-//
     public HelpIntroViewPagerAdapter(Context mContext, List<ScreenItem> screenItemList) {
         this.context = mContext;
         this.screenItemList = screenItemList;

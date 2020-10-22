@@ -85,16 +85,10 @@ public class BSTree {
         String desiredVal = r.value;
 
         if (r.condition == Condition.GREATER) {
-//            if (Double.parseDouble(currentVal) > Double.parseDouble(desiredVal)) {
-//            }
             return Double.parseDouble(currentVal) > Double.parseDouble(desiredVal);
         } else if (r.condition == Condition.LESS) {
-//            if (Double.parseDouble(currentVal) < Double.parseDouble(desiredVal)) {
-//            }
             return Double.parseDouble(currentVal) < Double.parseDouble(desiredVal);
         } else if (r.condition == Condition.EQUAL || r.condition == Condition.UNKNOWN) {
-//            if (currentVal.equals(desiredVal)) {
-//            }
             return (currentVal.equals(desiredVal) || currentVal.contains(desiredVal));
         }
         return true;

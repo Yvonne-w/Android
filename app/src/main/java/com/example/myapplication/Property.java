@@ -173,11 +173,11 @@ public class Property implements Comparable<Property>, Serializable {
             return String.valueOf(this.getType());
         } else if (s.contains("bel") || s.contains("cit") || s.contains("gun") || s.contains("jer") || s.contains("maj") || s.contains("mol") || s.contains("val") || s.contains("tug") || s.contains("west") || s.contains("woden") || s.contains("dis")) {
 //            belconnen, city, gungahlin, jerrabomberra, majura, molonglo_Valley,
-//                    tuggeranong, weston_Creek, woden_Valley;
+//            tuggeranong, weston_Creek, woden_Valley;
             return String.valueOf(this.getSuburb());
         } else if (s.contains("lut") || s.contains("str") || s.contains("uni") || s.contains("lj") || s.contains("bolton") || s.contains("lodge") || s.contains("mountain") || s.contains("ver") || s.contains("ray") || s.contains("harcourts")) {
 //            luton, strive, badenoch, above, rayWhite, harcourts, uniGardens, lj_hooker, bolton,
-//                    mountain, veriton, jada, smart_home_creation, mangolilly, action_advantage, unilodge;
+//            mountain, veriton, jada, smart_home_creation, mangolilly, action_advantage, unilodge;
             return String.valueOf(this.getAgent());
         }
 

@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <Properties>
+    <Property id="1500">
+        <propertyState>share</propertyState>
+        <propertyType>flat</propertyType>
+        <price>377.3297870141972</price>
+        <suburb>woden_Valley</suburb>
+        <latitude>-35.27183930119285</latitude>
+        <longitude>149.1135319796219</longitude>
+        <address>TBD</address>
+        <numBedrooms>1</numBedrooms>
+        <numBathrooms>1</numBathrooms>
+        <numCarspaces>1</numCarspaces>
+        <postcode>2619</postcode>
+        <agent>rayWhite</agent>
+        <allowPets>false</allowPets>
+    </Property>
     <Property id="1262">
         <propertyState>share</propertyState>
         <propertyType>townhouse</propertyType>
@@ -13513,21 +13528,6 @@
         <numCarspaces>0</numCarspaces>
         <postcode>2617</postcode>
         <agent>action_advantage</agent>
-        <allowPets>false</allowPets>
-    </Property>
-    <Property id="1500">
-        <propertyState>share</propertyState>
-        <propertyType>flat</propertyType>
-        <price>377.3297870141972</price>
-        <suburb>woden_Valley</suburb>
-        <latitude>-35.27183930119285</latitude>
-        <longitude>149.1135319796219</longitude>
-        <address>TBD</address>
-        <numBedrooms>1</numBedrooms>
-        <numBathrooms>1</numBathrooms>
-        <numCarspaces>1</numCarspaces>
-        <postcode>2619</postcode>
-        <agent>rayWhite</agent>
         <allowPets>false</allowPets>
     </Property>
     <Property id="1477">

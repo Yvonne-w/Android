@@ -15,7 +15,7 @@
         android:layout_marginTop="160dp"
         android:layout_marginRight="1dp"
         android:fontFamily="cursive"
-        android:text="Property in Canberra"
+        android:text="@string/property_in_canberra"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#009688"
         android:textSize="36sp"
@@ -23,7 +23,8 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/searchText1"
@@ -31,8 +32,8 @@
         android:layout_height="50dp"
         android:layout_marginTop="40dp"
         android:width="1dp"
-        android:hint="type in keywords and symbols..."
-        android:textSize="16dp"
+        android:hint="@string/type_in_keywords_and_symbols"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +47,7 @@
         android:layout_marginLeft="80dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/btn_all_shape"
-        android:text="Search"
+        android:text="@string/search"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchText1" />
@@ -59,7 +60,7 @@
         android:layout_marginEnd="80dp"
         android:layout_marginRight="80dp"
         android:background="@drawable/btn_all_shape"
-        android:text="Help"
+        android:text="@string/help"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchText1" />
@@ -74,6 +75,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="30dp"
+        android:contentDescription="@string/featured_property"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/pick1TV"
         app:layout_constraintHorizontal_bias="0.0"
@@ -91,7 +93,7 @@
         android:layout_marginEnd="1dp"
         android:layout_marginRight="1dp"
         android:fontFamily="@font/handlee"
-        android:text="Featured Property"
+        android:text="@string/featured_property"
         android:textColor="#FF9800"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -123,7 +125,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
-        android:text="TextView"
+        android:text="@string/textview"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

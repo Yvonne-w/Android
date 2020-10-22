@@ -9,10 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ViewSwitcher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,8 +25,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -41,11 +37,11 @@ public class MainActivity extends AppCompatActivity {
     String resultApp;
     Button helpButton;
     ImageView imageView1;
-    ImageView imageView2;
     TextView pick1TV;
-    TextView pick2TV;
     private Handler handler = new Handler();
     int randomSelect1;
+    String[] textSe;
+    int v = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         helpButton = findViewById(R.id.helpButton);
 //        imageView1 = findViewById(R.id.pick1ImgView);
-//        imageView2 = findViewById(R.id.pick2ImgView);
         pick1TV = findViewById(R.id.pick1TV);
-//        pick2TV = findViewById(R.id.pick2TV);
 
         properties = new ArrayList<>();
         bsTree = new BSTree();
@@ -86,8 +80,6 @@ public class MainActivity extends AppCompatActivity {
         Random random = new Random();
         randomSelect1 = random.nextInt(997);
         int id1 = getResources().getIdentifier("img" + (1001 + randomSelect1), "drawable", getPackageName());
-//        imageView1.setImageResource(id1);
-//        pick1TV.setText(properties.get(randomSelect1).toString());
 
         String p1 = "img" + id1;
         AnimationDrawable animation = new AnimationDrawable();
@@ -104,9 +96,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    String[] textSe;
-//    int t1 = randomSelect1;
-    int v = 0;
     public String[] getTextSe() {
         textSe = new String[3];
         textSe[0] = properties.get(randomSelect1).toString();
@@ -125,7 +114,6 @@ public class MainActivity extends AppCompatActivity {
             handler.postDelayed(this, 3001);
         }
     };
-
 
     private void resetPrefs() {
         SharedPreferences preferences = getApplicationContext().getSharedPreferences("myPrefs", MODE_PRIVATE);

@@ -60,6 +60,15 @@ assets:
     licence: NA, only used for learning purpose, no commericial use
 
 
+ - comment: Textview animation
+   url: https://stackoverflow.com/questions/4776514/updating-textview-every-n-seconds
+   licence: NA, only used for learning purpose, no commericial use
+
+ - comment: Image animation
+   url: https://www.journaldev.com/9555/android-textswitcher-and-imageswitcher-example-tutorial
+   licence: NA, only used for learning purpose, no commericial use
+
+
 # Sign *your* name and uids here. (Remove entries if you have fewer
 # than three members.)
 signatures:

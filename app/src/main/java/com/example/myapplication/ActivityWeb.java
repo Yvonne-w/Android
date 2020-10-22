@@ -14,7 +14,6 @@ public class ActivityWeb extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
 
-
         Intent intent = getIntent();
         Property pw = (Property) intent.getSerializableExtra("PropertyWeb");
 

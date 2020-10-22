@@ -8,35 +8,33 @@
 
     <TextView
         android:id="@+id/textViewWeb"
-        android:layout_width="291dp"
-        android:layout_height="326dp"
+        android:layout_width="304dp"
+        android:layout_height="353dp"
         android:layout_margin="1dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
 
+        android:layout_marginStart="13dp"
+
+        android:layout_marginLeft="13dp"
         android:layout_marginEnd="1dp"
-
         android:layout_marginRight="1dp"
-        android:text="TextView"
+        android:text="@string/textview"
         android:textColor="#000"
         android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.956"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.47" />
+        app:layout_constraintStart_toEndOf="@+id/imgWeb"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imgWeb"
-        android:layout_width="328dp"
-        android:layout_height="335dp"
+        android:layout_width="413dp"
+        android:layout_height="370dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginRight="9dp"
+        android:contentDescription="@string/todo"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.016"
+        app:layout_constraintEnd_toStartOf="@+id/textViewWeb"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.52" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

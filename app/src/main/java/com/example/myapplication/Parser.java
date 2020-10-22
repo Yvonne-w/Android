@@ -72,12 +72,4 @@ public class Parser {
         return requirements;
     }
 
-
-//    @Override
-//    public String toString() {
-//        return "Parser{" +
-//                "requirements=" + requirements +
-//                ", _tokenizer=" + _tokenizer +
-//                '}';
-//    }
 }
