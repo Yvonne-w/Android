@@ -8,6 +8,7 @@ import org.w3c.dom.Element;
 
 import java.io.File;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -59,7 +60,7 @@ public class PropertyGenerator {
         for (int i = 0; i < numProperties; i++) {
             State ps = randomEnum(State.class);
             Type pt = randomEnum(Type.class);
-            double price = 0;
+            double price;
             if (ps == State.auction || ps == State.sale) {
                 price = 100000 + 900000 * random.nextDouble();
             } else {
@@ -90,7 +91,7 @@ public class PropertyGenerator {
     // helper to select randomly from an enum list
     public static <T extends Enum<?>> T randomEnum(Class<T> tClass) {
         Random random = new Random();
-        int randomNo = random.nextInt(tClass.getEnumConstants().length);
+        int randomNo = random.nextInt(Objects.requireNonNull(tClass.getEnumConstants()).length);
         return tClass.getEnumConstants()[randomNo];
     }
 

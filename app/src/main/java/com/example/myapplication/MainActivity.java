@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     String[] textSe;
     int v = 0;
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        Button searchButton = (Button) findViewById(R.id.searchButton);
+        Button searchButton = findViewById(R.id.searchButton);
         searchButton.setOnClickListener(this::onClick);
 
         helpButton.setOnClickListener(view -> {
@@ -88,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         animation.addFrame(getResources().getDrawable(getResources().getIdentifier("img" + (1003 + randomSelect1), "drawable", getPackageName())), 3000);
         animation.setOneShot(false);
 
-        ImageView imageAnim = (ImageView) findViewById(R.id.pick1ImgView);
+        ImageView imageAnim = findViewById(R.id.pick1ImgView);
         imageAnim.setImageDrawable(animation);
         animation.start();
         getTextSe();
@@ -119,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences = getApplicationContext().getSharedPreferences("myPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("isIntroOpened", false);
-        editor.commit();
+        editor.apply();
     }
 
     public List<Property> loadData(String filename) throws IOException {

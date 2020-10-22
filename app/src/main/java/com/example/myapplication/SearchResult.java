@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -69,15 +68,12 @@ public class SearchResult extends AppCompatActivity {
 
         MyAdapter adapter = new MyAdapter(this, mTitle, mDescription, images);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-                Toast.makeText(SearchResult.this, "Clicked", Toast.LENGTH_LONG)
-                        .show();
-                Intent intent = new Intent(SearchResult.this,ActivityWeb.class);
-                intent.putExtra("PropertyWeb",resultList.get(position));
-                startActivity(intent);
-            }
+        listView.setOnItemClickListener((a, v, position, id) -> {
+            Toast.makeText(SearchResult.this, "Clicked", Toast.LENGTH_LONG)
+                    .show();
+            Intent intent1 = new Intent(SearchResult.this,ActivityWeb.class);
+            intent1.putExtra("PropertyWeb",resultList.get(position));
+            startActivity(intent1);
         });
     }
 
