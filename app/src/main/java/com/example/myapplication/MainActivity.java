@@ -2,13 +2,17 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewSwitcher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,6 +27,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -38,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView imageView2;
     TextView pick1TV;
     TextView pick2TV;
+    private Handler handler = new Handler();
+    int randomSelect1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +53,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         helpButton = findViewById(R.id.helpButton);
-        imageView1 = findViewById(R.id.pick1ImgView);
+//        imageView1 = findViewById(R.id.pick1ImgView);
 //        imageView2 = findViewById(R.id.pick2ImgView);
         pick1TV = findViewById(R.id.pick1TV);
 //        pick2TV = findViewById(R.id.pick2TV);
 
-        List<Property> properties = new ArrayList<>();
+        properties = new ArrayList<>();
         bsTree = new BSTree();
         temp = "";
         resultApp = "";
@@ -76,15 +84,48 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Random random = new Random();
-        int randomSelect1 = random.nextInt(1000);
+        randomSelect1 = random.nextInt(997);
         int id1 = getResources().getIdentifier("img" + (1001 + randomSelect1), "drawable", getPackageName());
-        imageView1.setImageResource(id1);
-        pick1TV.setText(properties.get(randomSelect1).toString());
-//        int randomSelect2 = random.nextInt(1000);
-//        int id2 = getResources().getIdentifier("img"+(1001+randomSelect2), "drawable", getPackageName());
-//        imageView2.setImageResource(id2);
-//        pick2TV.setText(properties.get(randomSelect2).toString());
+//        imageView1.setImageResource(id1);
+//        pick1TV.setText(properties.get(randomSelect1).toString());
+
+        String p1 = "img" + id1;
+        AnimationDrawable animation = new AnimationDrawable();
+        animation.addFrame(getResources().getDrawable(getResources().getIdentifier("img" + (1001 + randomSelect1), "drawable", getPackageName())), 3000);
+        animation.addFrame(getResources().getDrawable(getResources().getIdentifier("img" + (1002 + randomSelect1), "drawable", getPackageName())), 3000);
+        animation.addFrame(getResources().getDrawable(getResources().getIdentifier("img" + (1003 + randomSelect1), "drawable", getPackageName())), 3000);
+        animation.setOneShot(false);
+
+        ImageView imageAnim = (ImageView) findViewById(R.id.pick1ImgView);
+        imageAnim.setImageDrawable(animation);
+        animation.start();
+        getTextSe();
+        handler.post(updateTextRunnable);
+
     }
+
+    String[] textSe;
+//    int t1 = randomSelect1;
+    int v = 0;
+    public String[] getTextSe() {
+        textSe = new String[3];
+        textSe[0] = properties.get(randomSelect1).toString();
+        textSe[1] = properties.get(randomSelect1 + 1).toString();
+        textSe[2] = properties.get(randomSelect1 + 2).toString();
+        return textSe;
+    }
+
+    Runnable updateTextRunnable = new Runnable() {
+        public void run() {
+            if(v>2){
+                v=0;
+            }
+            pick1TV.setText(textSe[v]);
+            v++;
+            handler.postDelayed(this, 3001);
+        }
+    };
+
 
     private void resetPrefs() {
         SharedPreferences preferences = getApplicationContext().getSharedPreferences("myPrefs", MODE_PRIVATE);
@@ -141,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
         temp = userInput.getText().toString();
         bsTree.result = new ArrayList<>();
 
-        try{
+        try {
             bsTree.inOrderTraverse(bsTree, temp.toLowerCase());
             resultProperties = bsTree.result;
         } catch (Exception e) {
