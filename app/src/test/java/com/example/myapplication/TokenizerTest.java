@@ -36,7 +36,7 @@ public class TokenizerTest {
         Tokenizer digits = new Tokenizer("123");
         assertEquals(Token.Type.INT, digits.current().type());
         assertEquals(3, digits.tokenLen);
-        System.out.println(digits.current().token());
+//        System.out.println(digits.current().token());
     }
 
     @Test(timeout=1000)
