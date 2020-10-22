@@ -139,12 +139,10 @@ public class Property implements Comparable<Property>, Serializable {
 
 
     public int compareTo(Property o) {
-        int o1 = o.id;
-        int o2 = this.id;
         int result = 0;
-        if (o1 - o2 > 0) {
+        if (this.id > o.id) {
             result = 1;
-        } else if (o1 - o2 < 0) {
+        } else if (this.id < o.id) {
             result = -1;
         }
         return result;
@@ -177,7 +175,7 @@ public class Property implements Comparable<Property>, Serializable {
 //            belconnen, city, gungahlin, jerrabomberra, majura, molonglo_Valley,
 //                    tuggeranong, weston_Creek, woden_Valley;
             return String.valueOf(this.getSuburb());
-        } else if (s.contains("lut") || s.contains("str") || s.contains("uni") || s.contains("lj") || s.contains("bolton") || s.contains("lodge") || s.contains("mountain") || s.contains("ver") || s.contains("west") || s.contains("ray") || s.contains("harcourts")) {
+        } else if (s.contains("lut") || s.contains("str") || s.contains("uni") || s.contains("lj") || s.contains("bolton") || s.contains("lodge") || s.contains("mountain") || s.contains("ver") || s.contains("ray") || s.contains("harcourts")) {
 //            luton, strive, badenoch, above, rayWhite, harcourts, uniGardens, lj_hooker, bolton,
 //                    mountain, veriton, jada, smart_home_creation, mangolilly, action_advantage, unilodge;
             return String.valueOf(this.getAgent());
@@ -228,7 +226,7 @@ public class Property implements Comparable<Property>, Serializable {
 enum State {
     rent("rent"), sale("sale"), auction("auction"), share("share");
 
-    private State(String state) {
+    State(String state) {
         this.state = state;
     }
 
@@ -240,17 +238,17 @@ enum State {
 }
 
 enum Type {
-    house, unit, townhouse, flat, apartment, duplex;
+    house, unit, townhouse, flat, apartment, duplex
 }
 
 enum Suburb {
     belconnen, city, gungahlin, jerrabomberra, majura, molonglo_Valley,
-    tuggeranong, weston_Creek, woden_Valley;
+    tuggeranong, weston_Creek, woden_Valley
 }
 
 enum Agent {
     luton, strive, badenoch, above, rayWhite, harcourts, uniGardens, lj_hooker, bolton,
-    mountain, veriton, jada, smart_home_creation, mangolilly, action_advantage, unilodge;
+    mountain, veriton, jada, smart_home_creation, mangolilly, action_advantage, unilodge
 }
 
 

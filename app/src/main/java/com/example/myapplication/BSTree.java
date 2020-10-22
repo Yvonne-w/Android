@@ -22,7 +22,7 @@ public class BSTree {
 
     /**
      * Add property by comparing the id
-     * @param element
+     * @param element Property
      * @return whether the element is added
      */
     boolean add(Property element) {
@@ -61,10 +61,10 @@ public class BSTree {
 
     /**
      * Iteratively check the list of requirements
-     * @param exp
+     * @param exp String
      * @return  a boolean for the list of requirements
      */
-    private boolean checkConditions(String exp) {
+    boolean checkConditions(String exp) {
         Tokenizer t = new Tokenizer(exp);
         List<Requirement> requirements = new Parser(t).parseExp();
         for (Requirement r : requirements) {
@@ -77,7 +77,7 @@ public class BSTree {
 
     /**
      * An important method to handle the condition
-     * @param r
+     * @param r Requirement
      * @return Whether the current binary tree property satisfy the condition
      */
     public boolean checkAttribute(Requirement r) {
@@ -106,6 +106,6 @@ public class BSTree {
                 "property = " + property.id +
                 ", left = " + left +
                 ", right = " + right +
-                '}';
+                "}\n";
     }
 }
