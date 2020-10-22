@@ -141,8 +141,13 @@ public class MainActivity extends AppCompatActivity {
         temp = userInput.getText().toString();
         bsTree.result = new ArrayList<>();
 
-        bsTree.inOrderTraverse(bsTree, temp.toLowerCase());
-        resultProperties = bsTree.result;
+        try{
+            bsTree.inOrderTraverse(bsTree, temp.toLowerCase());
+            resultProperties = bsTree.result;
+        } catch (Exception e) {
+            Toast.makeText(MainActivity.this, "Invalid (Maybe wrong keyword)", Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
 
         try {
 
